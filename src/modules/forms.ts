@@ -30,7 +30,7 @@ import {
 } from "./sheets.ts";
 
 export const FORM_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbw6feMl4blQaejupjOmeUS90g6C6e3KYLpUd-Lde90i5s0JAN_FyIfoWez0EY1eCK1l/exec";
+  "https://script.google.com/macros/s/AKfycbzvAR8zwQWzuBZ_c2svXjE1HTVHe3F9il3cDMy4XGD0YCgpAHZMELcdhl7TaV1Fh980Cg/exec";
 export const KIT_FORM_ENDPOINT =
   "https://script.google.com/macros/s/AKfycbw6feMl4blQaejupjOmeUS90g6C6e3KYLpUd-Lde90i5s0JAN_FyIfoWez0EY1eCK1l/exec";
 
