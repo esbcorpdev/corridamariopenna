@@ -154,46 +154,6 @@ export function initEmpresaForm(endpoint: string = FORM_ENDPOINT): void {
     estadoInput.addEventListener("change", () => clearInputError(estadoInput, "emp-estado-error"));
   }
 
-  // Botão de preenchimento de teste para homologação
-  const fillTestBtn = document.getElementById("btn-empresa-fill-test");
-  if (fillTestBtn) {
-    fillTestBtn.addEventListener("click", () => {
-      if (nomeInput) nomeInput.value = "Fernando Calvo";
-      if (telefoneInput) telefoneInput.value = "(33) 99921-3596";
-      if (emailInput) emailInput.value = "fernando@exemplo.com";
-      if (empresaInput) empresaInput.value = "Fernando Empresa Exemplo Ltda";
-      if (funcionariosInput) funcionariosInput.value = "29";
-      if (cidadeInput) cidadeInput.value = "Belo Horizonte";
-      if (estadoInput) estadoInput.value = "MG";
-
-      clearInputError(nomeInput, "emp-nome-error");
-      clearInputError(telefoneInput, "emp-telefone-error");
-      clearInputError(emailInput, "emp-email-error");
-      clearInputError(empresaInput, "emp-empresa-error");
-      clearInputError(funcionariosInput, "emp-funcionarios-error");
-      clearInputError(cidadeInput, "emp-cidade-error");
-      clearInputError(estadoInput, "emp-estado-error");
-
-      if (feedbackEl) {
-        feedbackEl.textContent =
-          "Cadastro de teste preenchido! Clique em 'GARANTIR OPORTUNIDADE' para validar o envio.";
-        feedbackEl.className = "form-feedback is-success";
-      }
-    });
-  }
-
-  // Auto-preenchimento opcional via URL (?teste=1)
-  try {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get("teste") === "1" || urlParams.get("test") === "true") {
-      if (fillTestBtn) {
-        window.setTimeout(() => fillTestBtn.click(), 200);
-      }
-    }
-  } catch {
-    // ignore
-  }
-
   form.addEventListener("submit", async (event: SubmitEvent) => {
     event.preventDefault();
 

@@ -648,6 +648,7 @@ main#conteudo-principal:nth-of-type(1) > section#saude-ao-seu-alcance:nth-of-typ
 }
 
 .cta-text--desktop,
+main#conteudo-principal:nth-of-type(1) > section#saude-ao-seu-alcance:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div#runner-stage:nth-of-type(1) > a#cta-saude-alcance:nth-of-type(1) > span:nth-of-type(2) > span.cta-text--desktop,
 main#conteudo-principal:nth-of-type(1) > section#saude-ao-seu-alcance:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div#runner-stage:nth-of-type(1) > a#cta-saude-alcance:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) {
   display: inline-block;
   max-width: none;
@@ -658,7 +659,9 @@ main#conteudo-principal:nth-of-type(1) > section#saude-ao-seu-alcance:nth-of-typ
   box-sizing: border-box;
 }
 
-.cta-text--mobile {
+.cta-text--mobile,
+main#conteudo-principal:nth-of-type(1) > section#saude-ao-seu-alcance:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div#runner-stage:nth-of-type(1) > a#cta-saude-alcance:nth-of-type(1) > span:nth-of-type(2) > span.cta-text--mobile,
+main#conteudo-principal:nth-of-type(1) > section#saude-ao-seu-alcance:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div#runner-stage:nth-of-type(1) > a#cta-saude-alcance:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(2) {
   display: none !important;
 }
 
@@ -1130,38 +1133,6 @@ main#conteudo-principal:nth-of-type(1) > section#onmed-empresas:nth-of-type(3) >
 .btn-garantir:hover .btn-garantir__icon {
   transform: translateX(2px);
   background-color: #06075e;
-}
-
-.btn-empresa-test {
-  margin-top: 8px;
-  width: 100%;
-  height: 38px;
-  border-radius: 999px;
-  border: 1px dashed rgba(0, 229, 255, 0.45);
-  background: rgba(0, 229, 255, 0.05);
-  color: var(--color-cyan-bright);
-  font-family: var(--font-primary);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.btn-empresa-test:hover {
-  background: rgba(0, 229, 255, 0.15);
-  border-color: var(--color-cyan-bright);
-  box-shadow: 0 0 14px rgba(0, 229, 255, 0.25);
-  transform: translateY(-1px);
-}
-
-.btn-empresa-test:active {
-  transform: translateY(0);
 }
 
 .form-feedback {
@@ -2139,16 +2110,20 @@ footer:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-typ
   }
 
   .cta-text--desktop,
+  main#conteudo-principal:nth-of-type(1) > section#saude-ao-seu-alcance:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div#runner-stage:nth-of-type(1) > a#cta-saude-alcance:nth-of-type(1) > span:nth-of-type(2) > span.cta-text--desktop,
   main#conteudo-principal:nth-of-type(1) > section#saude-ao-seu-alcance:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div#runner-stage:nth-of-type(1) > a#cta-saude-alcance:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(1) {
-    display: inline !important;
+    display: none !important;
+  }
+
+  .cta-text--mobile,
+  main#conteudo-principal:nth-of-type(1) > section#saude-ao-seu-alcance:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div#runner-stage:nth-of-type(1) > a#cta-saude-alcance:nth-of-type(1) > span:nth-of-type(2) > span.cta-text--mobile,
+  main#conteudo-principal:nth-of-type(1) > section#saude-ao-seu-alcance:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div#runner-stage:nth-of-type(1) > a#cta-saude-alcance:nth-of-type(1) > span:nth-of-type(2) > span:nth-of-type(2) {
+    display: inline-block !important;
     overflow: visible !important;
     text-overflow: clip !important;
     white-space: nowrap !important;
     max-width: none !important;
-  }
-
-  .cta-text--mobile {
-    display: none !important;
+    vertical-align: middle;
   }
 
   .floating-cta-card,
