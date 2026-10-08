@@ -1,0 +1,24 @@
+{
+  "name": "corrida-mario-penna",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page oficial da 5ª Corrida Mário Penna com contagem regressiva, oportunidades empresariais e sorteio do Kit Cuidar de Você.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port=3000 --host=0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "firebase": "^12.19.0",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "typescript": "^7.0.2"
+  }
+}

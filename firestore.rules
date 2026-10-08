@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Permitir leitura e registro de inscrições públicas do sorteio e contadores atômicos
+    match /counters/{counterId} {
+      allow read, write: if true;
+    }
+    match /raffle_entries/{email} {
+      allow read, write: if true;
+    }
+    match /lucky_numbers/{number} {
+      allow read, write: if true;
+    }
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

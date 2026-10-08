@@ -1,0 +1,84 @@
+{
+  "entities": {
+    "RaffleCounter": {
+      "title": "RaffleCounter",
+      "description": "Contador atômico global para geração sequencial não-repetível do número da sorte",
+      "type": "object",
+      "properties": {
+        "lastNumber": {
+          "type": "number",
+          "description": "Último número da sorte atribuído"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp ISO da última atualização"
+        }
+      },
+      "required": ["lastNumber"]
+    },
+    "RaffleEntry": {
+      "title": "RaffleEntry",
+      "description": "Inscrição de participante no sorteio do Kit Cuidar de Você",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[0-9]+$",
+          "description": "Número da sorte exclusivamente numérico"
+        },
+        "name": {
+          "type": "string",
+          "description": "Nome completo do participante"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "E-mail do participante"
+        },
+        "city": {
+          "type": "string",
+          "description": "Cidade e estado do participante"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp ISO da inscrição"
+        }
+      },
+      "required": ["code", "email", "name"]
+    },
+    "LuckyNumberLock": {
+      "title": "LuckyNumberLock",
+      "description": "Trava de unicidade estrita por número da sorte para impedir duplicatas",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "E-mail ao qual o número foi concedido"
+        },
+        "assignedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp ISO da concessão"
+        }
+      },
+      "required": ["email", "assignedAt"]
+    }
+  },
+  "firestore": {
+    "/counters/raffle_counter": {
+      "schema": "RaffleCounter",
+      "description": "Contador sequencial atômico global de números da sorte"
+    },
+    "/raffle_entries/{email}": {
+      "schema": "RaffleEntry",
+      "description": "Registros de participantes indexados por e-mail"
+    },
+    "/lucky_numbers/{number}": {
+      "schema": "LuckyNumberLock",
+      "description": "Registro de números da sorte reservados para validação de unicidade"
+    }
+  }
+}

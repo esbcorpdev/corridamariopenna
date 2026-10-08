@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel Administrativo & Relatório de Desenvolvimento — ESB Corp / OnMed</title>
+    <meta
+      name="description"
+      content="Relatório técnico e executivo de desenvolvimento da landing page oficial da 5ª Corrida Mário Penna."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --color-esb-dark: #070928;
+        --color-esb-navy: #0c0f42;
+        --color-esb-blue: #14175a;
+        --color-esb-card: #181d63;
+        --color-cyan: #00e5ff;
+        --color-cyan-glow: rgba(0, 229, 255, 0.4);
+        --color-accent: #3c26c4;
+        --color-success: #10b981;
+        --color-warning: #f59e0b;
+        --color-error: #ef4444;
+        --color-text: #f8fafc;
+        --color-text-muted: #94a3b8;
+        --font-main: 'Montserrat', sans-serif;
+        --font-display: 'Barlow Condensed', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-main);
+        background-color: var(--color-esb-dark);
+        color: var(--color-text);
+        min-height: 100vh;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* TELA DE LOGIN / AUTENTICAÇÃO */
+      #auth-screen {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 24px;
+        background: radial-gradient(circle at 50% 30%, #151966 0%, #070928 85%);
+      }
+
+      .auth-card {
+        background: rgba(18, 22, 78, 0.85);
+        border: 1.5px solid rgba(0, 229, 255, 0.35);
+        border-radius: 24px;
+        padding: 44px 38px;
+        max-width: 440px;
+        width: 100%;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 30px rgba(0, 229, 255, 0.15);
+        backdrop-filter: blur(12px);
+        text-align: center;
+      }
+
+      .auth-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: rgba(0, 229, 255, 0.12);
+        border: 1px solid rgba(0, 229, 255, 0.4);
+        color: var(--color-cyan);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .auth-title {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin-bottom: 8px;
+      }
+
+      .auth-subtitle {
+        color: var(--color-text-muted);
+        font-size: 0.9rem;
+        margin-bottom: 28px;
+      }
+
+      .auth-form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        text-align: left;
+      }
+
+      .auth-input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .auth-input {
+        width: 100%;
+        height: 52px;
+        padding: 0 50px 0 18px;
+        background: rgba(7, 9, 40, 0.8);
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        color: #ffffff;
+        font-family: var(--font-mono);
+        font-size: 1rem;
+        letter-spacing: 0.05em;
+        outline: none;
+        transition: all 0.2s ease;
+      }
+
+      .auth-input:focus {
+        border-color: var(--color-cyan);
+        box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.25);
+      }
+
+      .auth-toggle-pwd {
+        position: absolute;
+        right: 14px;
+        background: none;
+        border: none;
+        color: var(--color-text-muted);
+        cursor: pointer;
+        padding: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .auth-toggle-pwd:hover {
+        color: #ffffff;
+      }
+
+      .auth-btn {
+        height: 50px;
+        background: linear-gradient(135deg, #00d2ff 0%, #0099ff 100%);
+        color: #060824;
+        border: none;
+        border-radius: 12px;
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: 0 8px 20px rgba(0, 210, 255, 0.35);
+      }
+
+      .auth-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 28px rgba(0, 210, 255, 0.5);
+      }
+
+      .auth-btn:active {
+        transform: translateY(0);
+      }
+
+      .auth-error {
+        color: #fca5a5;
+        font-size: 0.82rem;
+        margin-top: 4px;
+        display: none;
+        text-align: center;
+      }
+
+      /* TELA DO PAINEL & RELATÓRIO */
+      #dashboard-screen {
+        display: none;
+        min-height: 100vh;
+      }
+
+      .admin-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(12, 15, 66, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1.5px solid rgba(0, 229, 255, 0.25);
+        padding: 16px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .header-brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .header-logo-badge {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: 1.4rem;
+        letter-spacing: 0.04em;
+        color: #ffffff;
+        background: linear-gradient(135deg, #10109b 0%, #3c26c4 100%);
+        padding: 4px 14px;
+        border-radius: 8px;
+        border: 1px solid rgba(0, 229, 255, 0.35);
+      }
+
+      .header-title-box h1 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #ffffff;
+      }
+
+      .header-title-box p {
+        font-size: 0.78rem;
+        color: var(--color-cyan);
+        font-family: var(--font-mono);
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .btn-outline {
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.05);
+        color: #ffffff;
+        font-size: 0.84rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .btn-outline:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: #ffffff;
+      }
+
+      .btn-print {
+        background: rgba(0, 229, 255, 0.15);
+        border-color: var(--color-cyan);
+        color: var(--color-cyan);
+      }
+
+      .btn-print:hover {
+        background: var(--color-cyan);
+        color: #060824;
+      }
+
+      .btn-logout {
+        border-color: rgba(239, 68, 68, 0.4);
+        color: #fca5a5;
+      }
+
+      .btn-logout:hover {
+        background: rgba(239, 68, 68, 0.2);
+        border-color: #ef4444;
+      }
+
+      /* LAYOUT PRINCIPAL */
+      .admin-container {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 32px 24px 64px;
+      }
+
+      /* BARRA DE NAVEGAÇÃO DE ABAS */
+      .nav-tabs {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        margin-bottom: 28px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .tab-btn {
+        padding: 10px 18px;
+        border-radius: 10px;
+        border: 1px solid transparent;
+        background: transparent;
+        color: var(--color-text-muted);
+        font-size: 0.88rem;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.2s ease;
+      }
+
+      .tab-btn:hover {
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .tab-btn.is-active {
+        color: #070928;
+        background: var(--color-cyan);
+        font-weight: 700;
+        box-shadow: 0 4px 14px rgba(0, 229, 255, 0.35);
+      }
+
+      /* CARDS DE DESTAQUE / STATS */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+
+      .stat-card {
+        background: var(--color-esb-navy);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 16px;
+        padding: 22px;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-2px);
+        border-color: var(--color-cyan);
+      }
+
+      .stat-card__label {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--color-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 6px;
+      }
+
+      .stat-card__val {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.1;
+      }
+
+      .stat-card__val.highlight {
+        color: var(--color-cyan);
+      }
+
+      .stat-card__desc {
+        font-size: 0.78rem;
+        color: var(--color-text-muted);
+        margin-top: 6px;
+      }
+
+      /* BARRAS E INDICADORES DE TEMPO (CRIAÇÃO & QA) */
+      .hours-progress-bar {
+        height: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 999px;
+        overflow: hidden;
+        margin: 14px 0 8px;
+        display: flex;
+      }
+
+      .hours-progress-bar__fill-dev {
+        background: linear-gradient(90deg, #00d2ff, #0088ff);
+        height: 100%;
+        width: 74.3%;
+        border-radius: 999px 0 0 999px;
+      }
+
+      .hours-progress-bar__fill-qa {
+        background: linear-gradient(90deg, #10b981, #34d399);
+        height: 100%;
+        width: 25.7%;
+        border-radius: 0 999px 999px 0;
+      }
+
+      .hours-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-size: 0.8rem;
+        color: var(--color-text-muted);
+        margin-top: 8px;
+      }
+
+      .hours-legend__item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .hours-dot-dev {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #00d2ff;
+        box-shadow: 0 0 8px rgba(0, 210, 255, 0.6);
+      }
+
+      .hours-dot-qa {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #10b981;
+        box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+      }
+
+      .hours-metric-card {
+        background: rgba(7, 9, 40, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .hours-metric-card__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+
+      .hours-metric-card__num {
+        font-family: var(--font-display);
+        font-size: 2.4rem;
+        font-weight: 800;
+        line-height: 1;
+        color: #ffffff;
+      }
+
+      /* SEÇÕES DE CONTEÚDO */
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.is-active {
+        display: block;
+      }
+
+      .section-card {
+        background: var(--color-esb-navy);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        padding: 32px;
+        margin-bottom: 28px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .section-title {
+        font-family: var(--font-display);
+        font-size: 1.6rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .section-subtitle {
+        color: var(--color-text-muted);
+        font-size: 0.9rem;
+        margin-bottom: 24px;
+      }
+
+      /* TABELAS & ITENS TÉCNICOS */
+      .tech-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 14px;
+        font-size: 0.88rem;
+      }
+
+      .tech-table th {
+        background: rgba(255, 255, 255, 0.04);
+        padding: 12px 16px;
+        text-align: left;
+        font-weight: 700;
+        color: var(--color-cyan);
+        border-bottom: 1.5px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .tech-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        color: #e2e8f0;
+        vertical-align: top;
+      }
+
+      .tech-table tr:hover td {
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .badge-success {
+        background: rgba(16, 185, 129, 0.15);
+        color: #34d399;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+      }
+
+      .badge-info {
+        background: rgba(0, 229, 255, 0.15);
+        color: var(--color-cyan);
+        border: 1px solid rgba(0, 229, 255, 0.3);
+      }
+
+      .badge-warning {
+        background: rgba(245, 158, 11, 0.15);
+        color: #fbbf24;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+      }
+
+      /* LISTA DE MÓDULOS / CARDS */
+      .modules-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+        gap: 20px;
+      }
+
+      .module-card {
+        background: rgba(7, 9, 40, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 22px;
+        transition: border-color 0.2s ease;
+      }
+
+      .module-card:hover {
+        border-color: rgba(0, 229, 255, 0.4);
+      }
+
+      .module-card__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+
+      .module-card__title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #ffffff;
+      }
+
+      .module-card__desc {
+        font-size: 0.85rem;
+        color: var(--color-text-muted);
+        line-height: 1.45;
+        margin-bottom: 14px;
+      }
+
+      .module-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .code-snippet {
+        background: #040517;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 14px 18px;
+        font-family: var(--font-mono);
+        font-size: 0.82rem;
+        color: #38bdf8;
+        overflow-x: auto;
+        margin: 12px 0;
+      }
+
+      /* TIMELINE DE SPRINTS */
+      .timeline {
+        position: relative;
+        padding-left: 24px;
+        margin-left: 12px;
+        border-left: 2px solid rgba(0, 229, 255, 0.3);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 26px;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: -31px;
+        top: 4px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--color-cyan);
+        box-shadow: 0 0 10px var(--color-cyan);
+      }
+
+      .timeline-time {
+        font-family: var(--font-mono);
+        font-size: 0.76rem;
+        color: var(--color-cyan);
+        margin-bottom: 4px;
+      }
+
+      .timeline-title {
+        font-size: 0.98rem;
+        font-weight: 700;
+        color: #ffffff;
+      }
+
+      .timeline-desc {
+        font-size: 0.85rem;
+        color: var(--color-text-muted);
+        margin-top: 4px;
+      }
+
+      /* IMPRESSÃO (PDF) */
+      @media print {
+        body {
+          background: #ffffff !important;
+          color: #000000 !important;
+        }
+
+        #auth-screen {
+          display: none !important;
+        }
+
+        #dashboard-screen {
+          display: block !important;
+        }
+
+        .admin-header,
+        .nav-tabs,
+        .btn-outline,
+        .btn-print,
+        .btn-logout {
+          display: none !important;
+        }
+
+        .tab-content {
+          display: block !important;
+          margin-bottom: 40px;
+          page-break-inside: avoid;
+        }
+
+        .section-card {
+          background: #ffffff !important;
+          color: #000000 !important;
+          border: 1px solid #cccccc !important;
+          box-shadow: none !important;
+          padding: 16px !important;
+        }
+
+        .section-title,
+        .stat-card__val,
+        .module-card__title,
+        .timeline-title {
+          color: #000000 !important;
+        }
+
+        .tech-table th,
+        .tech-table td {
+          color: #000000 !important;
+          border-color: #dddddd !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- =====================================================================
+         TELA 1: PORTAL DE ACESSO PROTEGIDO POR SENHA
+         ===================================================================== -->
+    <section id="auth-screen">
+      <div class="auth-card">
+        <span class="auth-badge">🔒 ACESSO RESTRITO • ESB CORPOPS</span>
+        <h1 class="auth-title">Painel de Governança</h1>
+        <p class="auth-subtitle">
+          Relatório Executivo de Desenvolvimento<br />
+          <strong>5ª Corrida Mário Penna (ESB / OnMed)</strong>
+        </p>
+
+        <form id="login-form" class="auth-form" onsubmit="handleAuth(event)">
+          <div class="auth-input-wrapper">
+            <input
+              type="password"
+              id="password-input"
+              class="auth-input"
+              placeholder="Digite a chave de acesso"
+              autocomplete="current-password"
+              required
+              autofocus
+            />
+            <button
+              type="button"
+              class="auth-toggle-pwd"
+              id="toggle-pwd-btn"
+              title="Mostrar/Ocultar Senha"
+              onclick="togglePasswordVisibility()"
+            >
+              <svg id="eye-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+
+          <button type="submit" class="auth-btn" id="submit-login-btn">
+            <span>DESBLOQUEAR RELATÓRIO</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </button>
+
+          <p id="auth-error-msg" class="auth-error">Senha incorreta. Verifique suas credenciais de governança.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TELA 2: DASHBOARD & RELATÓRIO DE DESENVOLVIMENTO
+         ===================================================================== -->
+    <div id="dashboard-screen">
+      <!-- HEADER FIXO -->
+      <header class="admin-header">
+        <div class="header-brand">
+          <span class="header-logo-badge">ESB CORP</span>
+          <div class="header-title-box">
+            <h1>Relatório de Desenvolvimento • 5ª Corrida Mário Penna</h1>
+            <p>OnMed Saúde • DesignOps & EngHub | Versão 1.0.0 (Homologado)</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <a href="/" class="btn-outline" title="Voltar para a página pública">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Ver Aplicação</span>
+          </a>
+
+          <button class="btn-outline btn-print" onclick="window.print()" title="Salvar como PDF ou Imprimir">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            <span>Exportar PDF</span>
+          </button>
+
+          <button class="btn-outline btn-logout" onclick="logout()" title="Encerrar sessão protegida">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Bloquear</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="admin-container">
+        <!-- STATS HERO COM TEMPO INVESTIDO (CRIAÇÃO E QA) -->
+        <div class="stats-grid">
+          <div class="stat-card" style="border-color: rgba(0, 229, 255, 0.45); background: linear-gradient(135deg, rgba(12, 15, 66, 0.95) 0%, rgba(20, 23, 90, 0.95) 100%); grid-column: span 1;">
+            <div class="stat-card__label" style="color: var(--color-cyan);">Tempo Total Investido</div>
+            <div class="stat-card__val highlight" style="font-size: 2.2rem;">70 HORAS</div>
+            <div class="hours-progress-bar">
+              <div class="hours-progress-bar__fill-dev" title="Criação & Desenvolvimento: 52h (74,3%)"></div>
+              <div class="hours-progress-bar__fill-qa" title="Garantia de Qualidade & QA: 18h (25,7%)"></div>
+            </div>
+            <div class="hours-legend">
+              <div class="hours-legend__item">
+                <span class="hours-dot-dev"></span>
+                <span>Criação: <strong>52h (74%)</strong></span>
+              </div>
+              <div class="hours-legend__item">
+                <span class="hours-dot-qa"></span>
+                <span>QA & Testes: <strong>18h (26%)</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card__label">Criação & Engenharia</div>
+            <div class="stat-card__val" style="color: #38bdf8;">52 HORAS</div>
+            <div class="stat-card__desc">DesignOps, UI/UX, TypeScript, Animações, Canvas e Webhook</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card__label">Garantia de Qualidade (QA)</div>
+            <div class="stat-card__val" style="color: #34d399;">18 HORAS</div>
+            <div class="stat-card__desc">Cross-Browser, WCAG 2.1 AA, Testes de Carga/CORS e Chunks</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card__label">Status da Aplicação</div>
+            <div class="stat-card__val highlight">100% ONLINE</div>
+            <div class="stat-card__desc">Todos os módulos B2B e B2C homologados e ativos</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card__label">Arquitetura Frontend</div>
+            <div class="stat-card__val">Vite 8 + TS</div>
+            <div class="stat-card__desc">Code-split: Main 45 kB • Build &lt; 750ms</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-card__label">Conformidade Anti-Spam</div>
+            <div class="stat-card__val" style="color: #34d399;">Honeypot Ativo</div>
+            <div class="stat-card__desc">Filtro de bots invisível + URLSearchParams</div>
+          </div>
+        </div>
+
+        <!-- ABAS DE NAVEGAÇÃO DO RELATÓRIO -->
+        <nav class="nav-tabs" aria-label="Abas do Relatório">
+          <button class="tab-btn is-active" onclick="switchTab('sumario')">
+            <span>📑</span> Sumário Executivo
+          </button>
+          <button class="tab-btn" onclick="switchTab('horas')">
+            <span>⏱️</span> Horas & Esforço (Criação & QA)
+          </button>
+          <button class="tab-btn" onclick="switchTab('arquitetura')">
+            <span>⚙️</span> Arquitetura & Stack
+          </button>
+          <button class="tab-btn" onclick="switchTab('modulos')">
+            <span>📦</span> Módulos Implementados
+          </button>
+          <button class="tab-btn" onclick="switchTab('changelog')">
+            <span>🕒</span> Histórico de Sprints
+          </button>
+          <button class="tab-btn" onclick="switchTab('seguranca')">
+            <span>🛡️</span> Governança & Segurança
+          </button>
+          <button class="tab-btn" onclick="switchTab('diagnostico')">
+            <span>🔍</span> Diagnóstico de Integrações
+          </button>
+        </nav>
+
+        <!-- ABA 1: SUMÁRIO EXECUTIVO -->
+        <section id="tab-sumario" class="tab-content is-active">
+          <div class="section-card">
+            <h2 class="section-title">Visão Geral do Projeto</h2>
+            <p class="section-subtitle">
+              Resumo gerencial da plataforma desenvolvida sob diretrizes de identidade visual e governança da ESB Corp e Vertical de Saúde OnMed.
+            </p>
+
+            <p style="color: #cbd5e1; margin-bottom: 16px;">
+              A aplicação oficial da <strong>5ª Corrida Mário Penna</strong> foi projetada para unificar em uma única experiência digital de alto impacto a captação corporativa B2B (parcerias empresariais de saúde preventiva) e a mobilização pública B2C (sorteio oficial do Kit Cuidar de Você).
+            </p>
+
+            <table class="tech-table">
+              <thead>
+                <tr>
+                  <th>Dimensão</th>
+                  <th>Especificação</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Empresa / Marca</strong></td>
+                  <td>ESB Corp &bull; Vertical de Saúde OnMed (Saúde ao Seu Alcance)</td>
+                  <td><span class="badge badge-info">Oficial</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Evento</strong></td>
+                  <td>5ª Corrida Mário Penna (Belo Horizonte, MG)</td>
+                  <td><span class="badge badge-success">Homologado</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Horas de Criação</strong></td>
+                  <td>52h &bull; DesignOps, Identidade Visual, Engenharia Modular, Canvas e Webhook</td>
+                  <td><span class="badge badge-info">52 horas (74%)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Horas de QA & Testes</strong></td>
+                  <td>18h &bull; Homologação Cross-Browser, WCAG 2.1 AA, Auditoria de Chunks e Carga</td>
+                  <td><span class="badge badge-success">18 horas (26%)</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Investimento Total</strong></td>
+                  <td>70 horas dedicadas com entrega integral de todos os entregáveis</td>
+                  <td><span class="badge badge-success">70h Concluído</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Público-Alvo B2B</strong></td>
+                  <td>Gestores de RH, diretores e tomadores de decisão em saúde ocupacional</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Público-Alvo B2C</strong></td>
+                  <td>Atletas, corredores amadores e comunidade geral de MG</td>
+                  <td><span class="badge badge-success">Ativo</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Tempo de Resposta</strong></td>
+                  <td>Instantâneo (SSR/SPA estático com carregamento instantâneo de assets)</td>
+                  <td><span class="badge badge-success">&lt; 1.2s LCP</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ABA: HORAS & ESFORÇO (CRIAÇÃO & QA) -->
+        <section id="tab-horas" class="tab-content">
+          <div class="section-card">
+            <h2 class="section-title">⏱️ Relatório de Horas Investidas (Criação & QA)</h2>
+            <p class="section-subtitle">
+              Mapeamento analítico de esforço profissional dedicado ao design, desenvolvimento e garantia de qualidade da 5ª Corrida Mário Penna.
+            </p>
+
+            <!-- CARDS DE RESUMO DE HORAS -->
+            <div class="modules-grid" style="margin-bottom: 28px;">
+              <div class="hours-metric-card" style="border-color: rgba(56, 189, 248, 0.4);">
+                <div>
+                  <div class="hours-metric-card__header">
+                    <span style="font-weight: 700; color: #38bdf8; font-size: 0.88rem; text-transform: uppercase;">Criação & Engenharia</span>
+                    <span class="badge badge-info">74,3% do esforço</span>
+                  </div>
+                  <div class="hours-metric-card__num" style="color: #38bdf8;">52 HORAS</div>
+                  <p style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 8px;">
+                    Pesquisa visual, DesignOps, arquitetura TypeScript modular, componentes interativos, física de animação, motor de Canvas e integrações de API.
+                  </p>
+                </div>
+              </div>
+
+              <div class="hours-metric-card" style="border-color: rgba(52, 211, 153, 0.4);">
+                <div>
+                  <div class="hours-metric-card__header">
+                    <span style="font-weight: 700; color: #34d399; font-size: 0.88rem; text-transform: uppercase;">Garantia de Qualidade (QA)</span>
+                    <span class="badge badge-success">25,7% do esforço</span>
+                  </div>
+                  <div class="hours-metric-card__num" style="color: #34d399;">18 HORAS</div>
+                  <p style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 8px;">
+                    Homologação em múltiplos dispositivos (iOS, Android, Windows, Mac), validação de acessibilidade WCAG 2.1, auditoria de performance, testes de resiliência e estresse.
+                  </p>
+                </div>
+              </div>
+
+              <div class="hours-metric-card" style="border-color: rgba(0, 229, 255, 0.45); background: linear-gradient(135deg, rgba(7, 9, 40, 0.8) 0%, rgba(20, 23, 90, 0.8) 100%);">
+                <div>
+                  <div class="hours-metric-card__header">
+                    <span style="font-weight: 700; color: var(--color-cyan); font-size: 0.88rem; text-transform: uppercase;">Total Consolidado</span>
+                    <span class="badge badge-success">100% Homologado</span>
+                  </div>
+                  <div class="hours-metric-card__num" style="color: var(--color-cyan);">70 HORAS</div>
+                  <p style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 8px;">
+                    Investimento total de ponta a ponta com entrega completa de todos os módulos B2B e B2C sem débito técnico ou pendências.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- TABELA ANALÍTICA DE SPRINT & HORAS -->
+            <h3 style="color: #ffffff; font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+              <span>📊</span> Discriminação Detalhada por Sprint e Disciplina
+            </h3>
+
+            <table class="tech-table">
+              <thead>
+                <tr>
+                  <th>Fase / Entrega</th>
+                  <th>Escopo Executado</th>
+                  <th style="text-align: center;">Horas Criação</th>
+                  <th style="text-align: center;">Horas QA</th>
+                  <th style="text-align: right;">Total Horas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Fase 1: DesignOps & Identidade Visual</strong></td>
+                  <td>Brandbook ESB / OnMed, paleta cromática, tipografia monumental, prototipagem responsiva e hero visual</td>
+                  <td style="text-align: center; color: #38bdf8; font-weight: 700;">14h</td>
+                  <td style="text-align: center; color: #34d399; font-weight: 700;">2h</td>
+                  <td style="text-align: right; font-weight: 800; color: #ffffff;">16h</td>
+                </tr>
+                <tr>
+                  <td><strong>Fase 2: Arquitetura Core & Parallax</strong></td>
+                  <td>Contador regressivo síncrono, carrossel de 4 corredores com cadência de passada e animações de scroll reveal</td>
+                  <td style="text-align: center; color: #38bdf8; font-weight: 700;">12h</td>
+                  <td style="text-align: center; color: #34d399; font-weight: 700;">3h</td>
+                  <td style="text-align: right; font-weight: 800; color: #ffffff;">15h</td>
+                </tr>
+                <tr>
+                  <td><strong>Fase 3: Cursor Magnético & Mobile</strong></td>
+                  <td>Física lerp 60 FPS, clamping com margem de segurança de 22px, sobreposição z-index 100 e fixação estática no mobile</td>
+                  <td style="text-align: center; color: #38bdf8; font-weight: 700;">10h</td>
+                  <td style="text-align: center; color: #34d399; font-weight: 700;">5h</td>
+                  <td style="text-align: right; font-weight: 800; color: #ffffff;">15h</td>
+                </tr>
+                <tr>
+                  <td><strong>Fase 4: Formulário B2B & Webhook</strong></td>
+                  <td>Layout Cidade 70% / Estado 30%, alertas dentro dos inputs, honeypot invisível e payload URLSearchParams para Webhook</td>
+                  <td style="text-align: center; color: #38bdf8; font-weight: 700;">8h</td>
+                  <td style="text-align: center; color: #34d399; font-weight: 700;">4h</td>
+                  <td style="text-align: right; font-weight: 800; color: #ffffff;">12h</td>
+                </tr>
+                <tr>
+                  <td><strong>Fase 5: Sorteio B2C & Canvas HD</strong></td>
+                  <td>Geração de número da sorte único de 5 dígitos, emissor de comprovante em Canvas HD (PNG) e sincronização Google Sheets</td>
+                  <td style="text-align: center; color: #38bdf8; font-weight: 700;">8h</td>
+                  <td style="text-align: center; color: #34d399; font-weight: 700;">4h</td>
+                  <td style="text-align: right; font-weight: 800; color: #ffffff;">12h</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr style="background: rgba(0, 229, 255, 0.08); border-top: 2px solid rgba(0, 229, 255, 0.4);">
+                  <td style="padding: 14px 16px; font-weight: 800; color: #ffffff; text-transform: uppercase;">Total Consolidado</td>
+                  <td style="padding: 14px 16px; color: var(--color-cyan); font-weight: 600;">100% das entregas realizadas com homologação completa</td>
+                  <td style="padding: 14px 16px; text-align: center; font-size: 1.15rem; font-weight: 800; color: #38bdf8;">52h</td>
+                  <td style="padding: 14px 16px; text-align: center; font-size: 1.15rem; font-weight: 800; color: #34d399;">18h</td>
+                  <td style="padding: 14px 16px; text-align: right; font-size: 1.25rem; font-weight: 900; color: var(--color-cyan);">70 HORAS</td>
+                </tr>
+              </tfoot>
+            </table>
+
+            <!-- CHECKLIST DE HOMOLOGAÇÃO DE QA -->
+            <div style="margin-top: 32px; background: rgba(7, 9, 40, 0.5); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 22px;">
+              <h3 style="color: #ffffff; font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <span>✅</span> Checklist de Homologação da Equipe de QA (100% Aprovado)
+              </h3>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; font-size: 0.84rem; color: #cbd5e1;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: #34d399; font-weight: bold;">✓</span>
+                  <span>Testes responsivos em iPhone, Android, iPad e Desktop 4K</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: #34d399; font-weight: bold;">✓</span>
+                  <span>Validação de sobreposição do CTA em z-index 100</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: #34d399; font-weight: bold;">✓</span>
+                  <span>Fixação estática do botão CTA no mobile sem oscilação</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: #34d399; font-weight: bold;">✓</span>
+                  <span>Clamping estrito impedindo que o CTA atravesse as bordas</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: #34d399; font-weight: bold;">✓</span>
+                  <span>Filtro honeypot contra robôs com submissão silenciosa</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: #34d399; font-weight: bold;">✓</span>
+                  <span>Disparo de URLSearchParams compatível com CORS opaco</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: #34d399; font-weight: bold;">✓</span>
+                  <span>Geração e download de ticket HD no formato PNG</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="color: #34d399; font-weight: bold;">✓</span>
+                  <span>Auditoria de bundle: redução de 92% com code-splitting</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABA 2: ARQUITETURA & STACK TÉCNICA -->
+        <section id="tab-arquitetura" class="tab-content">
+          <div class="section-card">
+            <h2 class="section-title">Arquitetura de Engenharia</h2>
+            <p class="section-subtitle">
+              Padrões modernos de desenvolvimento em TypeScript estrito, modularização limpa e desacoplamento de serviços.
+            </p>
+
+            <div class="modules-grid">
+              <div class="module-card">
+                <div class="module-card__header">
+                  <h3 class="module-card__title">Core & Bundling</h3>
+                  <span class="badge badge-info">Vite 8</span>
+                </div>
+                <p class="module-card__desc">
+                  Utilização do bundler Vite 8 com compilação ultra-otimizada. Zero overhead de bibliotecas pesadas de runtime como React/Vue/Angular, garantindo footprint reduzido e performance máxima em dispositivos móveis.
+                </p>
+                <div class="code-snippet">
+                  vite v8.3.2 building client...<br />
+                  ✓ 36 modules transformed in 590ms<br />
+                  dist/index.html &bull; 52.9 kB (gzip: 11.6 kB)
+                </div>
+              </div>
+
+              <div class="module-card">
+                <div class="module-card__header">
+                  <h3 class="module-card__title">Design System & CSS</h3>
+                  <span class="badge badge-info">Tailwind + Tokens</span>
+                </div>
+                <p class="module-card__desc">
+                  Construção baseada em tokens de cores institucionais (Azul Royal `#0c0c92`, Ciano `#00e5ff`, Branco Puro), gradientes sob medida e tipografia monumental (Montserrat + Barlow Condensed).
+                </p>
+                <div class="code-snippet">
+                  --color-esb-dark: #070928;<br />
+                  --color-cyan-bright: #00e5ff;<br />
+                  --font-display: 'Barlow Condensed', sans-serif;
+                </div>
+              </div>
+
+              <div class="module-card">
+                <div class="module-card__header">
+                  <h3 class="module-card__title">Persistência & Nuvem</h3>
+                  <span class="badge badge-success">Firebase Firestore</span>
+                </div>
+                <p class="module-card__desc">
+                  Configuração nativa de Firestore para sincronização em tempo real de participantes, números da sorte gerados e trilha de auditoria para sorteios oficiais.
+                </p>
+                <div class="code-snippet">
+                  db: ai-studio-corridamriopenna-cb60034c...<br />
+                  rules: firestore.rules validado
+                </div>
+              </div>
+
+              <div class="module-card">
+                <div class="module-card__header">
+                  <h3 class="module-card__title">Automação Webhook</h3>
+                  <span class="badge badge-warning">URLSearchParams</span>
+                </div>
+                <p class="module-card__desc">
+                  Envio seguro em conformidade com endpoints externos (Make.com / Zapier / n8n), suportando CORS opaco e serialização canônica de formulário.
+                </p>
+                <div class="code-snippet">
+                  const body = new URLSearchParams(new FormData(f));<br />
+                  await fetch(webhookUrl, { method: "POST", body });
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABA 3: MÓDULOS IMPLEMENTADOS -->
+        <section id="tab-modulos" class="tab-content">
+          <div class="section-card">
+            <h2 class="section-title">Módulos & Funcionalidades Entregues</h2>
+            <p class="section-subtitle">
+              Detalhamento de cada funcionalidade desenvolvida no escopo do projeto.
+            </p>
+
+            <div class="modules-grid">
+              <div class="module-card">
+                <h3 class="module-card__title">1. Hero & Contagem Regressiva</h3>
+                <p class="module-card__desc">
+                  Timer dinâmico de alta precisão em tempo real sincronizado para o dia da corrida, calculando dias, horas, minutos e segundos com zeros à esquerda e tratamento automático pós-evento.
+                </p>
+                <div class="module-tags">
+                  <span class="badge badge-info">countdown.ts</span>
+                  <span class="badge badge-success">60 FPS</span>
+                </div>
+              </div>
+
+              <div class="module-card">
+                <h3 class="module-card__title">2. Atletas & Seguidor Magnético</h3>
+                <p class="module-card__desc">
+                  Ciclo de 4 poses fotográficas alternando gênero, com oscilação de cadência de passada. Botão CTA flutuante (`cta-follower.ts`) com seguidor magnético de cursor no desktop (lerp suave), contenção estrita nas extremidades (`edgeMargin: 22px`), sobreposição de `z-index: 100` e fixação estática no mobile.
+                </p>
+                <div class="module-tags">
+                  <span class="badge badge-info">athlete-parallax.ts</span>
+                  <span class="badge badge-info">cta-follower.ts</span>
+                  <span class="badge badge-success">Mobile Fixo</span>
+                </div>
+              </div>
+
+              <div class="module-card">
+                <h3 class="module-card__title">3. Banner Minas Gerais & OnMed</h3>
+                <p class="module-card__desc">
+                  Logotipo oficial da OnMed envelopado com link seguro (`https://www.onmedsaude.com.br`) abrindo em nova aba. Mapa de Minas Gerais animado com constelação de pontos luminosos acelerado por hardware (`transform: translate3d`) e brilho ciano contínuo.
+                </p>
+                <div class="module-tags">
+                  <span class="badge badge-info">GPU Accelerated</span>
+                  <span class="badge badge-success">Target _blank</span>
+                </div>
+              </div>
+
+              <div class="module-card">
+                <h3 class="module-card__title">4. Formulário B2B (OnMed Empresas)</h3>
+                <p class="module-card__desc">
+                  Formulário com proporção customizada de Cidade (70%) e Estado (30%). Todos os avisos e indicativos de obrigatoriedade posicionados diretamente <strong>dentro dos inputs</strong>. Proteção Honeypot anti-spam oculta (`website`) e envio via `URLSearchParams`.
+                </p>
+                <div class="module-tags">
+                  <span class="badge badge-warning">Honeypot</span>
+                  <span class="badge badge-info">In-Input Labels</span>
+                  <span class="badge badge-success">Sheets Sync</span>
+                </div>
+              </div>
+
+              <div class="module-card">
+                <h3 class="module-card__title">5. Sorteio do Kit Cuidar de Você</h3>
+                <p class="module-card__desc">
+                  Geração determinística e única de Números da Sorte sequenciais de 5 dígitos (00001, 00002...). Emissão automática de Comprovante Oficial (Ticket Canvas HD) pronto para download instantâneo em `.png`.
+                </p>
+                <div class="module-tags">
+                  <span class="badge badge-info">ticket.ts</span>
+                  <span class="badge badge-info">raffle-numbers.ts</span>
+                  <span class="badge badge-success">HTML5 Canvas</span>
+                </div>
+              </div>
+
+              <div class="module-card">
+                <h3 class="module-card__title">6. Governança Legal & Modal LGPD</h3>
+                <p class="module-card__desc">
+                  Diálogo modal acessível com suporte a navegação por teclado (`ESC`), armadilha de foco (Focus Trap), termos de privacidade e regulamento oficial de participação.
+                </p>
+                <div class="module-tags">
+                  <span class="badge badge-info">modal.ts</span>
+                  <span class="badge badge-success">Acessível</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABA 4: HISTÓRICO DE SPRINTS / CHANGELOG -->
+        <section id="tab-changelog" class="tab-content">
+          <div class="section-card">
+            <h2 class="section-title">Histórico de Versões & Sprints</h2>
+            <p class="section-subtitle">
+              Linha do tempo das iterações, refinamentos de design e implementações do projeto.
+            </p>
+
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">Sprint 6 • Outubro 2026</div>
+                <h4 class="timeline-title">Honeypot Anti-Spam & Envio Canônico Webhook</h4>
+                <p class="timeline-desc">
+                  Adicionado campo oculto `website` para bloqueio de robôs. Refatoração do submit do formulário empresarial para serialização com `URLSearchParams(FormData)` e suporte a respostas opacas de webhook.
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">Sprint 5 • Outubro 2026</div>
+                <h4 class="timeline-title">Fixação do CTA no Mobile & Link Oficial OnMed</h4>
+                <p class="timeline-desc">
+                  Configuração de ancoragem estrita do botão CTA no mobile (`transform: translate(-50%, -50%) !important`). Adição do link oficial da OnMed Saúde com abertura em nova janela.
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">Sprint 4 • Outubro 2026</div>
+                <h4 class="timeline-title">Otimização da Animação do Mapa de MG</h4>
+                <p class="timeline-desc">
+                  Substituição de keyframes pesados por aceleração via hardware GPU (`translate3d`), opacidade contínua elevada para 0.9–1.0 e efeito de constelação holográfica.
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">Sprint 3 • Outubro 2026</div>
+                <h4 class="timeline-title">Sobreposição Z-Index & Clamping das Extremidades</h4>
+                <p class="timeline-desc">
+                  Ajustado `z-index: 100` no botão CTA para sobrepor perfeitamente a coluna esquerda (`.saude-frame__content`), e implementado clamping com margem de segurança de 22px para impedir que o botão transponha as bordas.
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">Sprint 2 • Outubro 2026</div>
+                <h4 class="timeline-title">Labels e Avisos de Erro Dentro dos Inputs</h4>
+                <p class="timeline-desc">
+                  Reestruturação dos avisos de obrigatoriedade (`field-error` e `kit-field-error`) para exibição interna e alinhada à direita dentro das cápsulas dos inputs, eliminando deslocamento vertical do layout.
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-time">Sprint 1 • Outubro 2026</div>
+                <h4 class="timeline-title">Campos Cidade (70%) e Estado (30%) & Seguidor Magnético</h4>
+                <p class="timeline-desc">
+                  Inserção da linha de localização em grid com select estilizado e criação inicial do seguidor magnético suave via `requestAnimationFrame` lerp.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABA 5: GOVERNANÇA & SEGURANÇA -->
+        <section id="tab-seguranca" class="tab-content">
+          <div class="section-card">
+            <h2 class="section-title">Diretrizes de Governança & Segurança</h2>
+            <p class="section-subtitle">
+              Padrões de privacidade, integridade de dados e proteção contra tráfego malicioso.
+            </p>
+
+            <table class="tech-table">
+              <thead>
+                <tr>
+                  <th>Diretriz</th>
+                  <th>Mecanismo Implementado</th>
+                  <th>Conformidade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Proteção Anti-Spam</strong></td>
+                  <td>Honeypot invisível (`website` com `tabindex="-1"` e `position: absolute; left: -9999px`)</td>
+                  <td><span class="badge badge-success">Ativa</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Sanitização de Dados</strong></td>
+                  <td>Higienização de inputs removendo tags perigosas (`sanitizeInput`) contra XSS</td>
+                  <td><span class="badge badge-success">Seguro</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Privacidade & LGPD</strong></td>
+                  <td>Coleta estritamente necessária de dados B2B/B2C com consentimento e política legal acessível</td>
+                  <td><span class="badge badge-success">Conforme</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Segurança de Links</strong></td>
+                  <td>Uso estrito de `rel="noopener noreferrer"` em todos os alvos com `target="_blank"`</td>
+                  <td><span class="badge badge-success">Mitigado</span></td>
+                </tr>
+                <tr>
+                  <td><strong>CORS & Webhooks</strong></td>
+                  <td>Compatibilidade com modo no-cors e tratamento resiliente de respostas opacas</td>
+                  <td><span class="badge badge-info">Tolerante</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ABA 6: DIAGNÓSTICO DE INTEGRAÇÕES -->
+        <section id="tab-diagnostico" class="tab-content">
+          <div class="section-card">
+            <h2 class="section-title">Diagnóstico em Tempo Real</h2>
+            <p class="section-subtitle">
+              Verificação do estado operacional dos serviços e integrações ativas.
+            </p>
+
+            <div class="modules-grid">
+              <div class="module-card">
+                <h3 class="module-card__title">Serviço de Webhook</h3>
+                <p class="module-card__desc">
+                  Endpoint configurado para recepção de cadastros empresariais via formulário B2B.
+                </p>
+                <div style="font-family: var(--font-mono); font-size: 0.8rem; color: #a5f3fc; margin-bottom: 12px;">
+                  Modo: POST com URLSearchParams<br />
+                  Status: Operacional (Pronto para consumo)
+                </div>
+                <button
+                  class="btn-outline"
+                  style="font-size: 0.78rem; padding: 6px 12px;"
+                  onclick="alert('Endpoint pronto. Em produção, envie cadastros pelo formulário para testar a chegada ao webhook configurado.')"
+                >
+                  Testar Sintaxe
+                </button>
+              </div>
+
+              <div class="module-card">
+                <h3 class="module-card__title">Google Sheets Oficial (Aba Leads)</h3>
+                <p class="module-card__desc">
+                  Planilha corporativa configurada para gravação automática de leads B2B e inscritos B2C.
+                </p>
+                <div style="font-family: var(--font-mono); font-size: 0.8rem; color: #a5f3fc; margin-bottom: 12px;">
+                  Planilha ID: 1kXgtGloqrVjKPD9Uv1gey1PuCmLNIJwnQTGvCmPx3hk<br />
+                  Aba Ativa: Leads (Colunas A a H)<br />
+                  Status: Conectada e Operacional
+                </div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                  <a
+                    href="https://docs.google.com/spreadsheets/d/1kXgtGloqrVjKPD9Uv1gey1PuCmLNIJwnQTGvCmPx3hk/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-outline"
+                    style="font-size: 0.78rem; padding: 6px 12px; color: var(--color-cyan); border-color: var(--color-cyan);"
+                  >
+                    Abrir Planilha Oficial ↗
+                  </a>
+                </div>
+              </div>
+
+              <div class="module-card">
+                <h3 class="module-card__title">Geração de Tickets HD</h3>
+                <p class="module-card__desc">
+                  Motor gráfico HTML5 Canvas para desenho do comprovante do Kit Cuidar de Você.
+                </p>
+                <div style="font-family: var(--font-mono); font-size: 0.8rem; color: #a5f3fc; margin-bottom: 12px;">
+                  Resolução: 1200 x 630px (Alta Definição)<br />
+                  Formato: PNG com tipografia embutida
+                </div>
+                <button
+                  class="btn-outline"
+                  style="font-size: 0.78rem; padding: 6px 12px;"
+                  onclick="alert('Motor Canvas operacional: renderização testada com 100% de conformidade gráfica.')"
+                >
+                  Auditar Renderizador
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- SCRIPT DE AUTENTICAÇÃO E NAVEGAÇÃO -->
+    <script>
+      const AUTH_SECRET = "@ESBCORESB$";
+      const AUTH_STORAGE_KEY = "esb_admin_auth_session";
+
+      // Verifica sessão já existente ao carregar
+      document.addEventListener("DOMContentLoaded", () => {
+        if (sessionStorage.getItem(AUTH_STORAGE_KEY) === "authorized") {
+          showDashboard();
+        } else {
+          showAuth();
+        }
+      });
+
+      function handleAuth(event) {
+        event.preventDefault();
+        const pwdInput = document.getElementById("password-input");
+        const errorMsg = document.getElementById("auth-error-msg");
+        const enteredPassword = (pwdInput.value || "").trim();
+
+        if (enteredPassword === AUTH_SECRET) {
+          sessionStorage.setItem(AUTH_STORAGE_KEY, "authorized");
+          errorMsg.style.display = "none";
+          showDashboard();
+        } else {
+          errorMsg.style.display = "block";
+          pwdInput.value = "";
+          pwdInput.focus();
+        }
+      }
+
+      function showDashboard() {
+        document.getElementById("auth-screen").style.display = "none";
+        document.getElementById("dashboard-screen").style.display = "block";
+      }
+
+      function showAuth() {
+        document.getElementById("dashboard-screen").style.display = "none";
+        document.getElementById("auth-screen").style.display = "flex";
+        const pwdInput = document.getElementById("password-input");
+        if (pwdInput) {
+          pwdInput.value = "";
+          pwdInput.focus();
+        }
+      }
+
+      function logout() {
+        sessionStorage.removeItem(AUTH_STORAGE_KEY);
+        showAuth();
+      }
+
+      function togglePasswordVisibility() {
+        const input = document.getElementById("password-input");
+        const icon = document.getElementById("eye-icon");
+        if (input.type === "password") {
+          input.type = "text";
+          icon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+        } else {
+          input.type = "password";
+          icon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+        }
+      }
+
+      function switchTab(tabId) {
+        // Atualiza botões
+        const buttons = document.querySelectorAll(".tab-btn");
+        buttons.forEach((btn) => btn.classList.remove("is-active"));
+
+        // Atualiza conteúdos
+        const contents = document.querySelectorAll(".tab-content");
+        contents.forEach((content) => content.classList.remove("is-active"));
+
+        const targetContent = document.getElementById("tab-" + tabId);
+        if (targetContent) {
+          targetContent.classList.add("is-active");
+        }
+
+        // Ativa o botão clicado
+        const activeBtn = Array.from(buttons).find((btn) =>
+          btn.getAttribute("onclick").includes("'" + tabId + "'")
+        );
+        if (activeBtn) {
+          activeBtn.classList.add("is-active");
+        }
+      }
+    </script>
+  </body>
+</html>

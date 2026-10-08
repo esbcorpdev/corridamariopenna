@@ -1,0 +1,1210 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NYWDK35JN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-8NYWDK35JN');
+    </script>
+
+    <!-- SEO Principal -->
+    <title>Corrida Mário Penna Landing Page</title>
+    <meta
+      name="description"
+      content="High-performance, responsive landing page for the 5th Mário Penna Race, featuring sleek web design and interactive event forms."
+    />
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="Corrida Mário Penna Landing Page" />
+    <meta
+      property="og:description"
+      content="High-performance, responsive landing page for the 5th Mário Penna Race, featuring sleek web design and interactive event forms."
+    />
+    <meta property="og:image" content="/assets/hero-cidade.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Corrida Mário Penna Landing Page" />
+    <meta
+      name="twitter:description"
+      content="Esporte, movimento, saúde e cuidado na 5ª Corrida Mário Penna. Participe e concorra a um Kit Cuidar de Você exclusivo."
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Tipografia Google Fonts: Chakra Petch (Countdown Digital), Montserrat & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Folha de Estilo Principal -->
+    <link rel="stylesheet" href="/src/style.css" />
+
+    <!-- Dados Estruturados Schema.org (Evento Esportivo) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "name": "5ª Corrida Mário Penna",
+        "description": "Evento esportivo de corrida de rua promovendo saúde, movimento, prevenção e cuidado, com apoio de Saúde ao Seu Alcance e Onmed.",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mário Penna"
+        }
+      }
+    </script>
+  </head>
+  <body id="topo">
+
+    <!-- Link de acessibilidade para pular para o conteúdo principal -->
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- =======================================================================
+         BLOCO 1 — HEADER / HERO
+         ======================================================================= -->
+    <header class="hero-header" role="banner">
+      <!-- Barra Superior Utilitária: Oculta para usuários conforme solicitado -->
+      <div class="hero-top-util" hidden>
+        <div class="container hero-top-util__inner">
+          <span class="hero-top-util__tag">5ª Corrida Mário Penna • 24/10/2026</span>
+          <div class="hero-top-util__actions">
+            <button type="button" class="btn-drive-topbar" data-open-drive-modal aria-label="Abrir Google Drive dos Documentos da Corrida">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" class="drive-icon-svg" aria-hidden="true">
+                <path d="M7.74 3.75L2.83 12.25L5.78 17.35L10.69 8.85L7.74 3.75Z" fill="#0066DA"/>
+                <path d="M12 8.85L7.09 17.35H16.91L21.82 8.85H12Z" fill="#00AC47"/>
+                <path d="M16.26 3.75H8.74L13.65 12.25H21.17L16.26 3.75Z" fill="#EA4335"/>
+                <path d="M16.26 3.75L13.65 12.25L18.56 20.75H23.47L16.26 3.75Z" fill="#FFBA00"/>
+              </svg>
+              <span class="btn-drive-topbar__text">Google Drive</span>
+              <span class="btn-drive-topbar__badge" id="nav-drive-status">Conectar</span>
+            </button>
+
+            <button type="button" class="btn-drive-topbar btn-sheets-topbar" data-open-sheets-modal aria-label="Abrir Google Sheets da Corrida">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#0F9D58" class="sheets-icon-svg" aria-hidden="true">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H6v-2h6v2zm0-4H6v-2h6v2zm0-4H6V7h6v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/>
+              </svg>
+              <span class="btn-drive-topbar__text">Google Sheets</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container hero-header__grid">
+        <!-- Lado Esquerdo: Identidade / Logo da 5ª Corrida Mário Penna -->
+        <div class="hero-header__brand">
+          <a href="#topo" class="brand-corrida-link" aria-label="5ª Corrida Mário Penna - Início">
+            <!-- Logotipo Oficial: /assets/logotipo-corrida.png -->
+            <img
+              src="/assets/logotipo-corrida.png"
+              alt="Logotipo Oficial da 5ª Corrida Mário Penna"
+              class="brand-corrida-img"
+              width="300"
+              height="153"
+              referrerpolicy="no-referrer"
+            />
+          </a>
+        </div>
+
+        <!-- Centro: Contador Regressivo Funcional -->
+        <div class="hero-header__countdown" aria-label="Contagem regressiva para a 5ª Corrida Mário Penna - 24/10/2026 às 07:00">
+          <div class="countdown-header">
+            <span class="countdown-line" aria-hidden="true"></span>
+            <span class="countdown-kicker" id="countdown-title">FALTAM</span>
+            <span class="countdown-line" aria-hidden="true"></span>
+          </div>
+
+          <div
+            class="countdown-boxes"
+            role="timer"
+            aria-live="polite"
+            aria-atomic="true"
+            aria-labelledby="countdown-title"
+          >
+            <div class="countdown-unit">
+              <span class="countdown-number" id="cd-days">21</span>
+              <span class="countdown-label">dias</span>
+            </div>
+
+            <span class="countdown-separator" aria-hidden="true">:</span>
+
+            <div class="countdown-unit">
+              <span class="countdown-number" id="cd-hours">19</span>
+              <span class="countdown-label">hrs</span>
+            </div>
+
+            <span class="countdown-separator" aria-hidden="true">:</span>
+
+            <div class="countdown-unit">
+              <span class="countdown-number" id="cd-minutes">08</span>
+              <span class="countdown-label">min</span>
+            </div>
+
+            <span class="countdown-separator" aria-hidden="true">:</span>
+
+            <div class="countdown-unit">
+              <span class="countdown-number" id="cd-seconds">00</span>
+              <span class="countdown-label">sec</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lado Direito: Marcas de Apoio (Saúde ao Seu Alcance e Onmed) -->
+        <div class="hero-header__support">
+          <div class="support-header">
+            <span class="support-kicker">APOIO</span>
+            <span class="support-line" aria-hidden="true"></span>
+          </div>
+
+          <div class="support-logos">
+            <!-- Logotipo Oficial Saúde ao Seu Alcance: /assets/logotipo-saude-ao-seu-alcance.png -->
+            <a
+              href="#saude-ao-seu-alcance"
+              class="support-logo-link"
+              aria-label="Conheça o portal Saúde ao Seu Alcance"
+            >
+              <img
+                src="/assets/logotipo-saude-ao-seu-alcance.png"
+                alt="Logotipo Saúde ao Seu Alcance"
+                class="support-logo support-logo--saude"
+                width="190"
+                height="44"
+                referrerpolicy="no-referrer"
+              />
+            </a>
+
+            <!-- Logotipo Oficial Onmed: /assets/logotipo-onmed.png -->
+            <a
+              href="#onmed-empresas"
+              class="support-logo-link"
+              aria-label="Conheça a Onmed em Minas Gerais"
+            >
+              <img
+                src="/assets/logotipo-onmed.png"
+                alt="Logotipo Oficial Onmed"
+                class="support-logo support-logo--onmed"
+                width="175"
+                height="34"
+                referrerpolicy="no-referrer"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="conteudo-principal">
+      <!-- =====================================================================
+           BLOCO 2 — CENA ILUSTRADA DA CIDADE (PANORAMA URBANO E ESPORTIVO)
+           ===================================================================== -->
+      <section class="city-scene" aria-label="Cenário ilustrado da corrida na cidade">
+        <div class="city-scene__wrapper">
+          <!-- Ilustração Panorâmica Principal: /assets/hero-cidade.png -->
+          <img
+            src="/assets/hero-cidade.png?v=2"
+            alt="Ilustração panorâmica de Belo Horizonte com montanhas, prédios, lagoa da Pampulha, capivaras e corredores em pista azul e violeta"
+            class="city-scene__panorama"
+            width="2049"
+            height="821"
+            referrerpolicy="no-referrer"
+          />
+
+          <!-- Overlay suave de transição entre o céu azul-claro e a ilustração -->
+          <div class="city-scene__sky-blend" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           BLOCO 3 — SEÇÃO “SAÚDE AO SEU ALCANCE”
+           ===================================================================== -->
+      <section
+        id="saude-ao-seu-alcance"
+        class="saude-section reveal-section"
+        aria-labelledby="saude-heading"
+      >
+        <div class="container saude-section__outer">
+          <!-- Moldura interna com borda fina branca arredondada -->
+          <div class="saude-frame">
+            <!-- Coluna Esquerda: Conteúdo Institucional -->
+            <div class="saude-frame__content">
+              <div class="saude-brand">
+                <!-- Logotipo Oficial Saúde ao Seu Alcance (Versão branca para fundo roxo) -->
+                <img
+                  src="/assets/logotipo-saude-ao-seu-alcance-branco.png"
+                  alt="Logotipo Oficial Saúde ao Seu Alcance"
+                  class="saude-brand__img"
+                  width="240"
+                  height="55"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+
+              <h1 id="saude-heading" class="saude-title">
+                Sua saúde vai muito<br />
+                além da linha de chegada.
+              </h1>
+
+              <p class="saude-lead">
+                Você cuida do seu corpo.<br />
+                Mas o quanto conhece a sua saúde?
+              </p>
+
+              <div class="saude-prose">
+                <p>
+                  O Saúde ao Seu Alcance é um portal que conecta você a informações confiáveis
+                  sobre prevenção, alimentação, performance, sono, saúde mental e bem-estar.
+                </p>
+                <p>
+                  Com conteúdos acessíveis e uma linguagem simples, ajudamos você a entender
+                  melhor o seu corpo, adotar hábitos saudáveis e fazer escolhas mais conscientes
+                  dentro e fora dos treinos.
+                </p>
+              </div>
+
+              <p class="saude-closing">
+                Porque informação também<br />
+                é uma forma de cuidado.
+              </p>
+            </div>
+
+            <!-- Coluna Direita: Ilustração Técnica Geométrica + Corredor Sobreposto + CTA Flutuante -->
+            <div class="saude-frame__visual">
+              <!-- Ilustração técnica arquitetônica em linhas finas brancas -->
+              <svg
+                class="saude-wireframe"
+                viewBox="0 0 460 360"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <!-- Pilares isométricos 3D em linhas finas brancas -->
+                <path
+                  d="M28 360 V252 L88 214 L118 232 V360"
+                  stroke="#FFFFFF"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path d="M88 214 V360" stroke="#FFFFFF" stroke-width="2" />
+
+                <path
+                  d="M98 360 V220 L164 176 L198 196 V360"
+                  stroke="#FFFFFF"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path d="M164 176 V360" stroke="#FFFFFF" stroke-width="2" />
+
+                <path
+                  d="M178 360 V168 L256 118 L294 140 V360"
+                  stroke="#FFFFFF"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path d="M256 118 V360" stroke="#FFFFFF" stroke-width="2" />
+
+                <path
+                  d="M276 360 V92 L364 34 L406 58 V360"
+                  stroke="#FFFFFF"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path d="M364 34 V360" stroke="#FFFFFF" stroke-width="2" />
+
+                <path
+                  d="M352 360 V162 L428 112 L458 130 V360"
+                  stroke="#FFFFFF"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path d="M428 112 V360" stroke="#FFFFFF" stroke-width="2" />
+              </svg>
+
+              <!-- Atleta em Destaque Monumental com Parallax e 4 Posições de Corrida -->
+              <div class="runner-parallax-stage" id="runner-stage" aria-label="Atleta em movimento de corrida">
+                <div class="runner-actor" id="runner-actor">
+                  <!-- Posição 1: Atleta Masculino 1 (Virado para esquerda, uniforme neutro) -->
+                  <img
+                    src="/assets/corredor-pose-1.png?v=4"
+                    alt="Atleta Masculino da 5ª Corrida Mário Penna em movimento de corrida virado para esquerda"
+                    class="runner-pose-img runner-pose-img--1 is-active"
+                    width="780"
+                    height="960"
+                    data-pose="1"
+                    data-gender="masculino"
+                    referrerpolicy="no-referrer"
+                  />
+                  <!-- Posição 2: Atleta Feminina 1 (Virada para direita, uniforme neutro) -->
+                  <img
+                    src="/assets/corredor-pose-2.png?v=4"
+                    alt="Atleta Feminina da 5ª Corrida Mário Penna em movimento de corrida virada para direita"
+                    class="runner-pose-img runner-pose-img--2"
+                    width="780"
+                    height="960"
+                    data-pose="2"
+                    data-gender="feminina"
+                    referrerpolicy="no-referrer"
+                  />
+                  <!-- Posição 3: Atleta Masculino 2 (Virado para esquerda, uniforme neutro) -->
+                  <img
+                    src="/assets/corredor-pose-3.png?v=4"
+                    alt="Atleta Masculino da 5ª Corrida Mário Penna em movimento de corrida virado para esquerda"
+                    class="runner-pose-img runner-pose-img--3"
+                    width="780"
+                    height="960"
+                    data-pose="3"
+                    data-gender="masculino"
+                    referrerpolicy="no-referrer"
+                  />
+                  <!-- Posição 4: Atleta Feminina 2 (Virada para direita, uniforme neutro) -->
+                  <img
+                    src="/assets/corredor-pose-4.png?v=4"
+                    alt="Atleta Feminina da 5ª Corrida Mário Penna em movimento de corrida virada para direita"
+                    class="runner-pose-img runner-pose-img--4"
+                    width="780"
+                    height="960"
+                    data-pose="4"
+                    data-gender="feminina"
+                    referrerpolicy="no-referrer"
+                  />
+                </div>
+
+                <!-- Card Preto Flutuante (CTA) sobreposto ao atleta -->
+                <a
+                  href="https://saudeaoseualcance.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  id="cta-saude-alcance"
+                  class="floating-cta-card"
+                  aria-label="Acesse: saudeaoseualcance.com (abre em uma nova aba)"
+                >
+                  <span class="floating-cta-card__icon" aria-hidden="true">
+                    <svg viewBox="0 0 40 44" width="34" height="38" fill="none">
+                      <circle
+                        cx="20"
+                        cy="16"
+                        r="11"
+                        stroke="#FFFFFF"
+                        stroke-width="2.6"
+                        fill="#000000"
+                      />
+                      <path
+                        d="M20 9.5 L21.9 13.4 L26.2 14 L23.1 17 L23.8 21.3 L20 19.2 L16.2 21.3 L16.9 17 L13.8 14 L18.1 13.4 Z"
+                        fill="#FFFFFF"
+                      />
+                      <path
+                        d="M13 26 L10 39 L16.5 35.5 L19 40 L19.5 28"
+                        fill="#FFFFFF"
+                      />
+                      <path
+                        d="M27 26 L30 39 L23.5 35.5 L21 40 L20.5 28"
+                        fill="#FFFFFF"
+                      />
+                    </svg>
+                  </span>
+                  <span class="floating-cta-card__text"><span class="cta-text--desktop">Acesse: saudeaoseualcance.com</span></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           BLOCO 4 — SEÇÃO ONMED / MINAS GERAIS & BLOCO EMPRESAS
+           ===================================================================== -->
+      <section
+        id="onmed-empresas"
+        class="onmed-section reveal-section"
+        aria-labelledby="onmed-heading"
+      >
+        <div class="container">
+          <!-- Topo da seção: Logo Onmed à esquerda + Card Horizontal Minas Gerais à direita -->
+          <div class="onmed-top-bar">
+            <div class="onmed-top-bar__logo">
+              <!-- Logotipo Oficial Onmed com link para site oficial -->
+              <a
+                href="https://www.onmedsaude.com.br"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="onmed-logo-link"
+                aria-label="Acesse o site oficial da Onmed Saúde (abre em uma nova aba)"
+              >
+                <img
+                  src="/assets/logotipo-onmed-branco.png"
+                  alt="Logotipo Oficial Onmed"
+                  class="onmed-main-logo"
+                  width="260"
+                  height="66"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              </a>
+            </div>
+
+            <div class="onmed-mg-banner">
+              <div class="onmed-mg-banner__left">
+                <h2 id="onmed-heading" class="mg-title">
+                  <span class="mg-title__state">MINAS GERAIS,</span>
+                  <span class="mg-title__action">prepare-se!</span>
+                </h2>
+              </div>
+
+              <div class="onmed-mg-banner__map">
+                <!-- SUBSTITUIR MAPA DE MINAS GERAIS AQUI: /assets/mapa-minas-gerais.png -->
+                <img
+                  src="/assets/mapa-minas-gerais.png"
+                  alt="Mapa estilizado de Minas Gerais em pontos luminosos"
+                  class="mg-map-img"
+                  width="156"
+                  height="126"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+
+              <div class="onmed-mg-banner__right">
+                <p class="mg-launch-copy">
+                  A ONMED CHEGA PARA<br />
+                  AMPLIAR O SEU ACESSO À SAÚDE.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- BLOCO EMPRESAS: 3 Colunas / Cards -->
+          <div class="empresas-grid">
+            <!-- CARD 1 -->
+            <article class="empresa-card empresa-card--first">
+              <h3 class="empresa-card__title-blue">
+                Sua empresa<br />
+                pode sair na<br />
+                frente!
+              </h3>
+
+              <div class="empresa-card__caliper" aria-hidden="true">
+                <span></span>
+              </div>
+
+              <p class="empresa-card__text">
+                As primeiras empresas que realizarem o cadastro terão acesso a condições
+                promocionais de lançamento.
+              </p>
+            </article>
+
+            <!-- CARD 2 -->
+            <article class="empresa-card empresa-card--second">
+              <h3 class="empresa-card__title-white">
+                Mais saúde para sua equipe.<br />
+                Mais conexão para sua empresa.
+              </h3>
+
+              <p class="empresa-card__text">
+                A Onmed chega a Minas Gerais com uma proposta que une experiência no setor,
+                tecnologia e atendimento humanizado para oferecer planos de saúde empresariais
+                com valores que cabem no seu bolso.
+              </p>
+
+              <p class="empresa-card__footer-highlight">
+                E para marcar essa nova fase,<br />
+                preparamos uma oportunidade<br />
+                especial!
+              </p>
+            </article>
+
+            <!-- CARD 3 — Formulário Empresarial -->
+            <div class="empresa-form-panel">
+              <h3 class="empresa-form-panel__title">
+                Antecipe-se e garanta essa<br />
+                oportunidade para sua empresa!
+              </h3>
+
+              <form id="empresa-form" class="empresa-form" novalidate>
+                <div class="form-field">
+                  <label for="emp-nome" class="sr-only">Nome *</label>
+                  <input
+                    type="text"
+                    id="emp-nome"
+                    name="nome"
+                    placeholder="Nome *"
+                    autocomplete="name"
+                    required
+                    minlength="2"
+                    aria-describedby="emp-nome-error"
+                  />
+                  <span class="field-error" id="emp-nome-error" role="alert"></span>
+                </div>
+
+                <div class="form-field">
+                  <label for="emp-telefone" class="sr-only">Telefone *</label>
+                  <input
+                    type="tel"
+                    id="emp-telefone"
+                    name="telefone"
+                    placeholder="Telefone *"
+                    autocomplete="tel"
+                    inputmode="tel"
+                    required
+                    aria-describedby="emp-telefone-error"
+                  />
+                  <span class="field-error" id="emp-telefone-error" role="alert"></span>
+                </div>
+
+                <div class="form-field">
+                  <label for="emp-email" class="sr-only">E-mail *</label>
+                  <input
+                    type="email"
+                    id="emp-email"
+                    name="email"
+                    placeholder="E-mail *"
+                    autocomplete="email"
+                    required
+                    aria-describedby="emp-email-error"
+                  />
+                  <span class="field-error" id="emp-email-error" role="alert"></span>
+                </div>
+
+                <div class="form-field">
+                  <label for="emp-empresa" class="sr-only">Nome da Empresa *</label>
+                  <input
+                    type="text"
+                    id="emp-empresa"
+                    name="empresa"
+                    placeholder="Nome da Empresa *"
+                    autocomplete="organization"
+                    required
+                    minlength="2"
+                    aria-describedby="emp-empresa-error"
+                  />
+                  <span class="field-error" id="emp-empresa-error" role="alert"></span>
+                </div>
+
+                <div class="form-field">
+                  <label for="emp-funcionarios" class="sr-only">Quantidade de Funcionários *</label>
+                  <input
+                    type="text"
+                    id="emp-funcionarios"
+                    name="funcionarios"
+                    placeholder="Quantidade de Funcionários *"
+                    inputmode="numeric"
+                    pattern="[0-9]+"
+                    required
+                    aria-describedby="emp-funcionarios-error"
+                  />
+                  <span class="field-error" id="emp-funcionarios-error" role="alert"></span>
+                </div>
+
+                <!-- Campos de Localização: Cidade (70%) + Estado (30%) -->
+                <div class="form-row-location">
+                  <div class="form-field form-field--cidade">
+                    <label for="emp-cidade" class="sr-only">Cidade *</label>
+                    <input
+                      type="text"
+                      id="emp-cidade"
+                      name="cidade"
+                      placeholder="Cidade *"
+                      autocomplete="address-level2"
+                      required
+                      minlength="2"
+                      aria-describedby="emp-cidade-error"
+                    />
+                    <span class="field-error" id="emp-cidade-error" role="alert"></span>
+                  </div>
+
+                  <div class="form-field form-field--estado">
+                    <label for="emp-estado" class="sr-only">Estado *</label>
+                    <select
+                      id="emp-estado"
+                      name="estado"
+                      required
+                      aria-describedby="emp-estado-error"
+                    >
+                      <option value="" disabled selected hidden>Estado *</option>
+                      <option value="MG">MG</option>
+                      <option value="SP">SP</option>
+                      <option value="RJ">RJ</option>
+                      <option value="ES">ES</option>
+                      <option value="PR">PR</option>
+                      <option value="SC">SC</option>
+                      <option value="RS">RS</option>
+                      <option value="BA">BA</option>
+                      <option value="GO">GO</option>
+                      <option value="DF">DF</option>
+                      <option value="MT">MT</option>
+                      <option value="MS">MS</option>
+                      <option value="PE">PE</option>
+                      <option value="CE">CE</option>
+                      <option value="PA">PA</option>
+                      <option value="AM">AM</option>
+                      <option value="MA">MA</option>
+                      <option value="PB">PB</option>
+                      <option value="RN">RN</option>
+                      <option value="AL">AL</option>
+                      <option value="PI">PI</option>
+                      <option value="SE">SE</option>
+                      <option value="RO">RO</option>
+                      <option value="TO">TO</option>
+                      <option value="AC">AC</option>
+                      <option value="AP">AP</option>
+                      <option value="RR">RR</option>
+                    </select>
+                    <span class="field-error" id="emp-estado-error" role="alert"></span>
+                  </div>
+                </div>
+
+                <!-- HONEYPOT: escondido de humanos, NÃO remover -->
+                <div style="position:absolute;left:-9999px" aria-hidden="true">
+                  <input name="website" tabindex="-1" autocomplete="off" />
+                </div>
+
+                <button type="submit" class="btn-garantir" id="btn-empresa-submit">
+                  <span class="btn-garantir__label">GARANTIR OPORTUNIDADE</span>
+                  <span class="btn-garantir__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+                      <path
+                        d="M9 6L15 12L9 18"
+                        stroke="currentColor"
+                        stroke-width="2.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </button>
+
+                <button
+                  type="button"
+                  id="btn-empresa-fill-test"
+                  class="btn-empresa-test"
+                  title="Preencher automaticamente com dados de teste para validação imediata"
+                >
+                  <span aria-hidden="true">⚡</span> PREENCHER CADASTRO TESTE
+                </button>
+
+                <div
+                  id="empresa-form-feedback"
+                  class="form-feedback"
+                  role="status"
+                  aria-live="polite"
+                ></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           BLOCO 5 — SEÇÃO “KIT CUIDAR DE VOCÊ” + SORTEIO PROMOCIONAL
+           ===================================================================== -->
+      <section
+        id="kit-cuidar"
+        class="kit-section reveal-section"
+        aria-labelledby="kit-heading"
+      >
+        <div class="container">
+          <!-- Cabeçalho + Produtos do Kit -->
+          <div class="kit-showcase">
+            <div class="kit-showcase__copy">
+              <h2 id="kit-heading" class="kit-title">
+                <strong>KIT</strong> CUIDAR DE VOCÊ
+              </h2>
+              <p class="kit-subtitle">
+                Cuidar da saúde também<br />
+                pode render boas surpresas!
+              </p>
+            </div>
+
+            <div class="kit-showcase__products">
+              <!-- Imagem Oficial do Kit: /assets/kit.png -->
+              <img
+                src="/assets/kit.png"
+                alt="Kit Cuidar de Você composto por itens e brindes exclusivos"
+                class="kit-products-img"
+                width="680"
+                height="290"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+            </div>
+          </div>
+
+          <!-- Área do Formulário do Kit (Layout horizontal em 5 blocos conforme referência) -->
+          <form id="kit-form" class="kit-promo-form" novalidate>
+            <div class="kit-promo-grid">
+              <!-- Bloco Azul à Esquerda: Estado Inicial e Sucesso com Número da Sorte -->
+              <div class="kit-promo-banner" id="kit-promo-banner">
+                <div id="kit-banner-initial" class="kit-banner-state">
+                  <p class="kit-promo-banner__text">
+                    Participe e<br />
+                    concorra a um<br />
+                    kit exclusivo!
+                  </p>
+                </div>
+
+                <div id="kit-banner-success" class="kit-banner-state kit-banner-state--success" style="display: none;">
+                  <span class="kit-success-kicker">🎉 PARABÉNS POR PARTICIPAR!</span>
+                  <p class="kit-success-tagline">Você está concorrendo ao Kit Cuidar de Você!</p>
+                  <div class="kit-success-code-card">
+                    <div class="kit-success-code-row">
+                      <div class="kit-success-code-info">
+                        <span class="kit-success-code-label">SEU NÚMERO DA SORTE</span>
+                        <strong id="kit-success-code-value" class="kit-success-code-value">00000</strong>
+                      </div>
+                      <button type="button" id="btn-kit-download-ticket" class="btn-kit-download-ticket" aria-label="Baixar comprovante do número da sorte" title="Baixar comprovante em alta definição">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                          <polyline points="7 10 12 15 17 10"/>
+                          <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <p class="kit-success-user-info">
+                    Associado ao e-mail:<br />
+                    <strong id="kit-success-user-email">email@exemplo.com</strong>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Campo 1: NOME -->
+              <div class="kit-input-card">
+                <label for="kit-nome" class="kit-input-card__label">NOME *</label>
+                <div class="kit-input-card__lines">
+                  <input
+                    type="text"
+                    id="kit-nome"
+                    name="nome"
+                    class="kit-input-card__field"
+                    placeholder="Digite seu nome completo *"
+                    autocomplete="name"
+                    required
+                    minlength="2"
+                    aria-describedby="kit-nome-error"
+                  />
+                  <span class="kit-ruled-line" aria-hidden="true"></span>
+                  <span class="kit-ruled-line" aria-hidden="true"></span>
+                </div>
+                <span class="kit-field-error" id="kit-nome-error" role="alert"></span>
+              </div>
+
+              <!-- Campo 2: E-MAIL -->
+              <div class="kit-input-card">
+                <label for="kit-email" class="kit-input-card__label">E-MAIL *</label>
+                <div class="kit-input-card__lines">
+                  <input
+                    type="email"
+                    id="kit-email"
+                    name="email"
+                    class="kit-input-card__field"
+                    placeholder="seuemail@exemplo.com.br *"
+                    autocomplete="email"
+                    required
+                    aria-describedby="kit-email-error"
+                  />
+                  <span class="kit-ruled-line" aria-hidden="true"></span>
+                  <span class="kit-ruled-line" aria-hidden="true"></span>
+                </div>
+                <span class="kit-field-error" id="kit-email-error" role="alert"></span>
+              </div>
+
+              <!-- Campo 3: CIDADE -->
+              <div class="kit-input-card">
+                <label for="kit-cidade" class="kit-input-card__label">CIDADE *</label>
+                <div class="kit-input-card__lines">
+                  <input
+                    type="text"
+                    id="kit-cidade"
+                    name="cidade"
+                    class="kit-input-card__field"
+                    placeholder="Ex.: Belo Horizonte - MG *"
+                    autocomplete="address-level2"
+                    required
+                    minlength="2"
+                    aria-describedby="kit-cidade-error"
+                  />
+                  <span class="kit-ruled-line" aria-hidden="true"></span>
+                  <span class="kit-ruled-line" aria-hidden="true"></span>
+                </div>
+                <span class="kit-field-error" id="kit-cidade-error" role="alert"></span>
+              </div>
+
+              <!-- Botão Enviar à Direita / Ações pós-envio -->
+              <div class="kit-submit-container">
+                <button type="submit" class="kit-submit-btn" id="btn-kit-submit" aria-label="Confirmar Inscrição e participar do sorteio do Kit Cuidar">
+                  <span>CONFIRMAR INSCRIÇÃO</span>
+                </button>
+                <div id="kit-post-actions" class="kit-post-actions" style="display: none;">
+                  <button type="button" id="btn-kit-download-alt" class="btn-kit-download-alt" title="Baixar comprovante do número">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                    <span>Baixar Número</span>
+                  </button>
+                  <button type="button" id="btn-kit-new-entry" class="btn-kit-new-entry" title="Cadastrar outro e-mail">
+                    Novo Envio
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="kit-form-feedback"
+              class="kit-form-feedback"
+              role="status"
+              aria-live="polite"
+            ></div>
+          </form>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- =======================================================================
+         BLOCO 6 — FOOTER INSTITUCIONAL
+         ====================================================================== -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="site-footer__top">
+          <!-- Logos Institucionais -->
+          <div class="site-footer__brands">
+            <a href="#topo" class="footer-brand-item" aria-label="5ª Corrida Mário Penna">
+              <img
+                src="/assets/logotipo-corrida.png"
+                alt="Logotipo Oficial da 5ª Corrida Mário Penna"
+                width="165"
+                height="84"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+            </a>
+            <a
+              href="#saude-ao-seu-alcance"
+              class="footer-brand-item"
+              aria-label="Saúde ao Seu Alcance"
+            >
+              <img
+                src="/assets/logotipo-saude-ao-seu-alcance.png"
+                alt="Logotipo Oficial Saúde ao Seu Alcance"
+                width="160"
+                height="37"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
+            </a>
+            <!-- Onmed + Registro ANS -->
+            <div class="footer-onmed-group">
+              <a href="#onmed-empresas" class="footer-brand-item" aria-label="Onmed">
+                <img
+                  src="/assets/logotipo-onmed.png"
+                  alt="Logotipo Oficial Onmed"
+                  width="155"
+                  height="30"
+                  class="footer-logo-onmed"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              </a>
+              <div class="footer-ans-wrap">
+                <img
+                  src="/assets/ansonmed.png"
+                  alt="Registro ANS Onmed"
+                  width="155"
+                  height="14"
+                  class="footer-logo-ans"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Links Institucionais -->
+          <nav class="site-footer__nav" aria-label="Navegação institucional do rodapé">
+            <h3 class="footer-heading">Navegação</h3>
+            <ul class="footer-links">
+              <li><a href="#topo">Início e Contagem Regressiva</a></li>
+              <li><a href="#saude-ao-seu-alcance">Saúde ao Seu Alcance</a></li>
+              <li><a href="#onmed-empresas">Onmed em Minas Gerais</a></li>
+              <li><a href="#empresa-form">Condições para Empresas</a></li>
+              <li><a href="#kit-cuidar">Sorteio Kit Cuidar de Você</a></li>
+            </ul>
+          </nav>
+
+          <!-- Links Legais -->
+          <div class="site-footer__legal">
+            <h3 class="footer-heading">Institucional</h3>
+            <ul class="footer-links">
+              <li>
+                <button type="button" class="footer-modal-trigger" data-modal="privacidade">
+                  Política de Privacidade
+                </button>
+              </li>
+              <li>
+                <button type="button" class="footer-modal-trigger" data-modal="termos">
+                  Termos de Uso
+                </button>
+              </li>
+              <li>
+                <a href="/admin/" class="footer-admin-link" style="color: rgba(0, 229, 255, 0.85); font-size: 0.82rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 4px;">
+                  🔒 Painel Admin (Relatório)
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Informações Oficiais da Corrida -->
+          <div class="site-footer__contact site-footer__info">
+            <h3 class="footer-heading">A CORRIDA</h3>
+            <ul class="footer-info-list">
+              <li>
+                <span class="info-label">DATA:</span>
+                <span class="info-value">Sábado – 24 de Outubro de 2026</span>
+              </li>
+              <li>
+                <span class="info-label">MODALIDADE:</span>
+                <span class="info-value">Corrida de 10 km - Corrida de 5 km - Caminhada de 2 km - Corrida Kids Nascidos entre 2013 e 2022</span>
+              </li>
+              <li>
+                <span class="info-label">LOCAL:</span>
+                <span class="info-value">Praça Nova – Pampulha – Belo Horizonte</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal Oficial Google Drive: Documentos e Regulamento -->
+    <div
+      id="drive-modal"
+      class="drive-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="drive-modal-title"
+      hidden
+    >
+      <div class="drive-modal__backdrop" id="drive-modal-backdrop"></div>
+      <div class="drive-modal__dialog">
+        <div class="drive-modal__header">
+          <div class="drive-modal__title-wrap">
+            <svg viewBox="0 0 87.3 78" width="28" height="25" fill="none" class="drive-modal__icon" aria-hidden="true">
+              <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8H0c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+              <path d="M43.65 25 29.9 1.2c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44A8.9 8.9 0 0 0 0 53h27.5z" fill="#00ac47"/>
+              <path d="M73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5H59.8l5.85 10.1z" fill="#ea4335"/>
+              <path d="M43.65 25 57.4 1.2C56.05.4 54.5 0 52.9 0H34.4c-1.6 0-3.15.4-4.5 1.2z" fill="#00832d"/>
+              <path d="M59.8 53H27.5L13.75 76.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.4 4.5-1.2z" fill="#2684fc"/>
+              <path d="M73.4 26.5 60.7 4.5c-.8-1.4-1.95-2.5-3.3-3.3L43.65 25l16.15 28h27.5c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/>
+            </svg>
+            <div>
+              <h2 id="drive-modal-title" class="drive-modal__title">Google Drive — Documentos da Corrida</h2>
+              <p class="drive-modal__subtitle">Acesse, salve e organize regulamentos e comprovantes no seu Drive</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            id="drive-modal-close"
+            class="drive-modal__close"
+            aria-label="Fechar janela do Google Drive"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div id="drive-feedback" class="drive-feedback" style="display: none;" role="status"></div>
+
+        <!-- Visão Não Autenticado: Botão Oficial GSI (Google Sign-In) do SKILL.md -->
+        <div id="drive-logged-out" class="drive-auth-card">
+          <div class="drive-auth-card__copy">
+            <h3 class="drive-auth-card__heading">Conecte sua Conta Google</h3>
+            <p class="drive-auth-card__text">
+              Com a sua permissão, integre seu Google Drive para salvar o Guia Oficial do Atleta, consultar comprovantes de participação e gerenciar materiais da 5ª Corrida Mário Penna.
+            </p>
+          </div>
+
+          <!-- Official Sign-in with Google Button Specification from SKILL.md -->
+          <button type="button" id="btn-drive-login" class="gsi-material-button">
+            <div class="gsi-material-button-state"></div>
+            <div class="gsi-material-button-content-wrapper">
+              <div class="gsi-material-button-icon">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" style="display: block;">
+                  <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                  <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                  <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                  <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                  <path fill="none" d="M0 0h48v48H0z"></path>
+                </svg>
+              </div>
+              <span class="gsi-material-button-contents">Entrar com o Google</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Visão Autenticado -->
+        <div id="drive-logged-in" style="display: none;">
+          <!-- Barra do Usuário -->
+          <div class="drive-user-bar">
+            <div class="drive-user-bar__info">
+              <img id="drive-user-avatar" class="drive-user-avatar" alt="Avatar do usuário" src="" />
+              <div>
+                <strong id="drive-user-name" class="drive-user-name">Atleta</strong>
+                <span id="drive-user-email" class="drive-user-email">email@exemplo.com</span>
+              </div>
+            </div>
+            <button type="button" id="btn-drive-logout" class="btn-drive-logout">
+              Desconectar
+            </button>
+          </div>
+
+          <!-- Ação Rápida de Corrida: Salvar Guia no Drive -->
+          <div class="drive-action-banner">
+            <div>
+              <h4 class="drive-action-banner__title">Guia & Regulamento da Corrida 2026</h4>
+              <p class="drive-action-banner__text">Salve instantaneamente o documento oficial da prova no seu Google Drive com um clique.</p>
+            </div>
+            <button type="button" id="btn-drive-save-guide" class="btn-drive-save">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+              Salvar no meu Drive
+            </button>
+          </div>
+
+          <!-- Navegador de Arquivos do Drive -->
+          <div class="drive-browser-header">
+            <h4 class="drive-browser-title">Seus Arquivos no Google Drive</h4>
+            <div class="drive-search-wrap">
+              <input
+                type="search"
+                id="drive-search-input"
+                class="drive-search-input"
+                placeholder="Filtrar arquivos..."
+                aria-label="Filtrar arquivos do Google Drive"
+              />
+              <button type="button" id="btn-drive-refresh" class="btn-drive-refresh" title="Atualizar arquivos" aria-label="Atualizar lista">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div id="drive-files-list" class="drive-files-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Oficial Google Sheets: Gestão de Inscrições & Empresas -->
+    <div
+      id="sheets-modal"
+      class="drive-modal sheets-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="sheets-modal-title"
+      hidden
+    >
+      <div class="drive-modal__backdrop" id="sheets-modal-backdrop"></div>
+      <div class="drive-modal__dialog">
+        <div class="drive-modal__header">
+          <div class="drive-modal__title-wrap">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="#0F9D58" class="sheets-modal__icon" aria-hidden="true">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H6v-2h6v2zm0-4H6v-2h6v2zm0-4H6V7h6v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/>
+            </svg>
+            <div>
+              <h2 id="sheets-modal-title" class="drive-modal__title">Google Sheets — Gestão da Corrida</h2>
+              <p class="drive-modal__subtitle">Sincronize inscrições, equipes e empresas parceiras em planilhas Google</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            id="sheets-modal-close"
+            class="drive-modal__close"
+            aria-label="Fechar janela do Google Sheets"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div id="sheets-feedback" class="drive-feedback" style="display: none;" role="status"></div>
+
+        <!-- Banner da Tabela Oficial do Print -->
+        <div class="sheets-action-banner">
+          <div>
+            <h4 class="drive-action-banner__title">[Inscritos] Corrida Mario Penna - Onmed e Saúde ao seu Alcance</h4>
+            <p class="drive-action-banner__text">
+              Tabela oficial de apuração dos participantes do Kit e sorteio com as colunas oficiais:
+            </p>
+            <div class="sheets-columns-preview" aria-label="Colunas oficiais da tabela">
+              <span class="sheet-col-badge sheet-col-badge--gray">Nº Inscrição</span>
+              <span class="sheet-col-badge sheet-col-badge--teal">Número da Sorte</span>
+              <span class="sheet-col-badge sheet-col-badge--teal">Nome Completo</span>
+              <span class="sheet-col-badge sheet-col-badge--teal">EMAIL</span>
+              <span class="sheet-col-badge sheet-col-badge--teal">CIDADE</span>
+            </div>
+          </div>
+          <div class="sheets-btn-group">
+            <button type="button" id="btn-sheets-create" class="btn-sheets-create">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              Conectar Tabela Oficial
+            </button>
+          </div>
+        </div>
+
+        <!-- Link para tabela ativa selecionada -->
+        <div id="sheets-active-link-wrap" class="sheets-active-link-box" style="display: none;">
+          <div>
+            <span class="sheets-active-label">Tabela Conectada:</span>
+            <strong id="sheets-active-table-name" class="sheets-active-table-title">[Inscritos] Corrida Mario Penna - Onmed e Saúde ao seu Alcance</strong>
+          </div>
+          <div class="sheets-active-actions">
+            <a id="sheets-active-link" href="#" target="_blank" rel="noopener noreferrer" class="sheets-active-link">
+              Abrir no Google Sheets ↗
+            </a>
+            <button type="button" id="btn-sheets-export-sample" class="btn-sheets-sync-btn">
+              Sincronizar Registro Teste
+            </button>
+          </div>
+        </div>
+
+        <!-- Lista de Planilhas Disponíveis -->
+        <div class="drive-browser-header">
+          <h4 class="drive-browser-title">Suas Planilhas no Google Sheets</h4>
+        </div>
+
+        <div id="sheets-existing-list" class="drive-files-list"></div>
+      </div>
+    </div>
+
+    <!-- Modal Institucional Acessível para Política de Privacidade / Termos de Uso -->
+    <div
+      id="legal-modal"
+      class="legal-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="legal-modal-title"
+      hidden
+    >
+      <div class="legal-modal__backdrop" data-close-modal></div>
+      <div class="legal-modal__dialog">
+        <div class="legal-modal__header">
+          <h2 id="legal-modal-title" class="legal-modal__title">Informações Legais</h2>
+          <button
+            type="button"
+            class="legal-modal__close"
+            data-close-modal
+            aria-label="Fechar janela"
+          >
+            ✕
+          </button>
+        </div>
+        <div id="legal-modal-body" class="legal-modal__body"></div>
+      </div>
+    </div>
+
+    <!-- Script Principal Modular (TypeScript via Vite) -->
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

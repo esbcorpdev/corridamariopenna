@@ -1,0 +1,8 @@
+{
+  "name": "Corrida Mário Penna Landing Page",
+  "description": "High-performance, responsive landing page for the 5th Mário Penna Race, featuring sleek web design and interactive event forms.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
