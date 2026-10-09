@@ -1,0 +1,22 @@
+{
+  "name": "5ª Corrida Mário Penna • Saúde ao Seu Alcance",
+  "short_name": "5ª Corrida MP",
+  "description": "Landing page oficial da 5ª Corrida Mário Penna em Belo Horizonte com inscrições para o sorteio do Kit Cuidar de Você e planos empresariais Onmed.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070952",
+  "theme_color": "#10109B",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/logotipo-corrida.png",
+      "sizes": "300x153",
+      "type": "image/png"
+    }
+  ]
+}

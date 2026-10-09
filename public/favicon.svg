@@ -1,5 +1,106 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#10109B"/>
-  <path d="M18 14 H44 L41 24 H27 L25 34 C38 32 45 38 43 49 C41 56 34 58 23 58 C16 58 13 54 14 46 H24 C23 50 25 51 28 51 C31 51 33 49 34 45 C35 41 33 39 28 39 L16 39 Z" fill="#0088FF"/>
-  <circle cx="48" cy="18" r="5" fill="#5624E8"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
+  <defs>
+    <!-- Gradiente de Fundo Oficial: Azul Marinho Real -> Violeta Elétrico -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070952"/>
+      <stop offset="42%" stop-color="#10109B"/>
+      <stop offset="85%" stop-color="#4B1CD4"/>
+      <stop offset="100%" stop-color="#5624E8"/>
+    </linearGradient>
+
+    <!-- Gradiente Ciano Elétrico de Alta Performance / Movimento -->
+    <linearGradient id="cyanMotion" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D2FF"/>
+      <stop offset="50%" stop-color="#00F0FF"/>
+      <stop offset="100%" stop-color="#70E1FF"/>
+    </linearGradient>
+
+    <!-- Gradiente Branco Puro com Reflexo Esportivo -->
+    <linearGradient id="whiteShine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E2EEFF"/>
+    </linearGradient>
+
+    <!-- Borda Sutil Luminosa -->
+    <linearGradient id="borderStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#5624E8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#00E5FF" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo Squircle com Cantos Arredondados Modernos -->
+  <rect
+    x="3"
+    y="3"
+    width="122"
+    height="122"
+    rx="30"
+    fill="url(#bgGrad)"
+    stroke="url(#borderStroke)"
+    stroke-width="2.5"
+  />
+
+  <!-- Faixas Esportivas Dinâmicas no Fundo (Linhas da Pista de Corrida) -->
+  <g opacity="0.22">
+    <path
+      d="M -10 98 C 30 110, 80 95, 138 60"
+      fill="none"
+      stroke="#00E5FF"
+      stroke-width="3"
+      stroke-linecap="round"
+    />
+    <path
+      d="M -10 112 C 34 124, 88 108, 138 74"
+      fill="none"
+      stroke="#FFFFFF"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+  </g>
+
+  <!-- Ícone de Movimento: Silhueta de Corredor em Sprint / Chama Esportiva na Base Esquerda -->
+  <g fill="url(#cyanMotion)">
+    <!-- Rastro de Velocidade do Atleta -->
+    <path d="M 22 76 C 20 70, 24 64, 31 63 C 27 69, 29 74, 34 76 C 29 77, 24 81, 22 76 Z" opacity="0.8"/>
+    <!-- Swoosh de Aceleração Inferior -->
+    <path
+      d="M 18 89 C 24 87, 36 86, 44 88 C 37 91, 28 92, 20 93 C 17 92, 17 90, 18 89 Z"
+      opacity="0.9"
+    />
+  </g>
+
+  <!-- Numeral Principal: "5" Atlético, Itálico e Aerodinâmico -->
+  <!-- Topo do 5 com Corte de Velocidade -->
+  <path
+    d="M 28 32 L 78 32 C 81 32, 83 34, 82 37 L 80 44 C 79 47, 77 48, 74 48 L 47 48 L 43 60 C 47 57, 53 55, 61 55 C 76 55, 87 64, 85 80 C 83 95, 69 104, 51 104 C 36 104, 26 97, 25 89 C 24 86, 27 84, 30 84 C 33 84, 35 86, 37 88 C 41 92, 46 94, 52 94 C 61 94, 69 88, 70 79 C 71 71, 64 65, 54 65 C 47 65, 42 68, 38 72 C 37 73, 35 73, 34 72 L 32 68 L 39 36 C 39.5 33.5, 41 32, 43.5 32 Z"
+    fill="url(#whiteShine)"
+  />
+
+  <!-- Faixa de Destaque Ciano Cortando a Curva do 5 (Efeito Neon Esportivo) -->
+  <path
+    d="M 53 65 C 64 65, 71 71, 70 79 C 69 88, 61 94, 52 94 C 47 94, 43 92, 40 89 C 43 86, 48 84, 54 84 C 60 84, 63 80, 63 76 C 63 71, 59 67, 53 67 C 49 67, 46 69, 44 71 L 43 65 Z"
+    fill="url(#cyanMotion)"
+  />
+
+  <!-- Indicador Ordinal "ª" (5ª Edição) com Estilo Super-esportivo -->
+  <g transform="translate(86, 26)">
+    <!-- Letra "a" superior estilizada -->
+    <path
+      d="M 13 14 C 13 9, 17 6, 23 6 C 29 6, 32 9, 32 14 L 32 26 C 32 28, 30 29, 28 29 L 26 29 C 24 29, 23 28, 23 26 C 21 28, 18 29.5, 14 29.5 C 9 29.5, 6 26.5, 6 22 C 6 17, 10 14.5, 17 14 L 23 13.7 L 23 13 C 23 10.5, 21 9, 18 9 C 15 9, 13 10, 12 11.5 C 11.5 12, 10.5 12.2, 9.5 11.8 L 7.5 11 C 6.5 10.5, 6.5 9.5, 7.5 8.8 C 9.5 7.2, 13 6, 17.5 6 Z M 23 18 L 18 18.5 C 13 19, 11 20.5, 11 22.5 C 11 24.5, 13 25.5, 15.5 25.5 C 19 25.5, 22 23.5, 23 20 Z"
+      fill="url(#whiteShine)"
+    />
+    <!-- Traço Sublinhado Esportivo sob o "ª" em Ciano Neon -->
+    <rect
+      x="7"
+      y="33"
+      width="24"
+      height="3.5"
+      rx="1.75"
+      fill="url(#cyanMotion)"
+    />
+  </g>
+
+  <!-- Ponto de Brilho / Centelha no Vértice Superior Direito -->
+  <circle cx="106" cy="20" r="2.5" fill="#00F0FF"/>
 </svg>
