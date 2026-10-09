@@ -17,7 +17,9 @@ export interface RaffleEntryRecord {
   code: string; // Exclusivamente numérico: ex. "10001"
   name: string;
   email: string;
+  phone?: string;
   city: string;
+  state?: string;
   date: string;
 }
 
@@ -103,7 +105,9 @@ function generateNextLocalUniqueNumber(): string {
 export async function getOrAllocateUniqueLuckyNumber(
   name: string,
   email: string,
-  city: string
+  city: string,
+  phone: string = "",
+  state: string = ""
 ): Promise<string> {
   const normEmail = email.toLowerCase().trim();
 
@@ -179,7 +183,9 @@ export async function getOrAllocateUniqueLuckyNumber(
         code: candidateStr,
         name,
         email: normEmail,
+        phone,
         city,
+        state,
         createdAt: nowIso,
       });
 
@@ -191,7 +197,9 @@ export async function getOrAllocateUniqueLuckyNumber(
       code: allocatedCode,
       name,
       email: normEmail,
+      phone,
       city,
+      state,
       date: new Date().toISOString(),
     });
 
@@ -206,7 +214,9 @@ export async function getOrAllocateUniqueLuckyNumber(
     code: localCode,
     name,
     email: normEmail,
+    phone,
     city,
+    state,
     date: new Date().toISOString(),
   });
 

@@ -6,7 +6,9 @@
 export interface TicketData {
   name: string;
   email: string;
+  phone?: string;
   city: string;
+  state?: string;
   code: string;
   inscricao?: number | string;
   date?: string;
@@ -171,15 +173,16 @@ export async function downloadLuckyNumberTicket(data: TicketData): Promise<void>
   ctx.font = "bold 22px 'Plus Jakarta Sans', Arial, sans-serif";
   ctx.fillText(truncateText(ctx, data.name, 600), 70, 636);
 
-  // Cidade (se houver)
+  // Cidade / Estado (se houver)
   if (data.city) {
     ctx.fillStyle = "#cbd5e1";
     ctx.font = "500 15px 'Plus Jakarta Sans', Arial, sans-serif";
-    ctx.fillText("Cidade:", 70, 690);
+    ctx.fillText("Localidade:", 70, 690);
 
     ctx.fillStyle = "#ffffff";
     ctx.font = "600 18px 'Plus Jakarta Sans', Arial, sans-serif";
-    ctx.fillText(truncateText(ctx, data.city, 600), 140, 690);
+    const locText = data.state ? `${data.city} - ${data.state}` : data.city;
+    ctx.fillText(truncateText(ctx, locText, 550), 160, 690);
   }
 
   // 8. Rodapé Institucional com Apoio e Certificação de Autenticidade

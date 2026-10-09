@@ -1,7 +1,14 @@
 /**
  * Módulo de Integração com a Google Sheets API v4
  * Tabela Oficial: "[Inscritos] Corrida Mario Penna - Onmed e Saúde ao seu Alcance"
- * Colunas: [Nº Inscrição | Número da Sorte | Nome Completo | EMAIL | CIDADE]
+ * Colunas Oficiais (Ordem A a G):
+ *   A: Nº Inscrição
+ *   B: Nome Completo
+ *   C: Email
+ *   D: Telefone
+ *   E: Cidade
+ *   F: Estado
+ *   G: Número da Sorte
  */
 
 import { getAccessToken, openDriveModal } from "./drive.ts";
@@ -24,10 +31,12 @@ export interface EmpresaRow {
 export interface KitRow {
   dataHora?: string;
   numeroInscricao?: number | string;
-  numeroDaSorte: string;
   nomeCompleto: string;
   email: string;
+  telefone: string;
   cidade: string;
+  estado: string;
+  numeroDaSorte: string;
   status?: string;
 }
 
@@ -70,7 +79,9 @@ export function queuePendingSheetInscrito(data: {
   numeroDaSorte: string;
   nomeCompleto: string;
   email: string;
+  telefone: string;
   cidade: string;
+  estado: string;
 }): void {
   try {
     const raw = localStorage.getItem(LOCAL_STORAGE_PENDING_QUEUE_KEY);
@@ -92,7 +103,14 @@ export async function flushPendingInscritosToSheet(): Promise<number> {
   const token = await getAccessToken();
   if (!token) return 0;
 
-  let queue: Array<{ numeroDaSorte: string; nomeCompleto: string; email: string; cidade: string }> = [];
+  let queue: Array<{
+    numeroDaSorte: string;
+    nomeCompleto: string;
+    email: string;
+    telefone: string;
+    cidade: string;
+    estado: string;
+  }> = [];
   try {
     const raw = localStorage.getItem(LOCAL_STORAGE_PENDING_QUEUE_KEY);
     if (raw) queue = JSON.parse(raw);
@@ -201,7 +219,7 @@ export async function getOrCreateOfficialInscritosSheet(): Promise<{ id: string;
                     {
                       userEnteredValue: { stringValue: "Nº Inscrição" },
                       userEnteredFormat: {
-                        backgroundColor: { red: 0.62, green: 0.62, blue: 0.62 }, // Cinza do print
+                        backgroundColor: { red: 0.62, green: 0.62, blue: 0.62 },
                         textFormat: { bold: true, foregroundColor: { red: 1, green: 1, blue: 1 } },
                         horizontalAlignment: "CENTER",
                       },
@@ -215,7 +233,7 @@ export async function getOrCreateOfficialInscritosSheet(): Promise<{ id: string;
                       },
                     },
                     {
-                      userEnteredValue: { stringValue: "EMAIL" },
+                      userEnteredValue: { stringValue: "Email" },
                       userEnteredFormat: {
                         backgroundColor: { red: 0.0, green: 0.35, blue: 0.45 },
                         textFormat: { bold: true, foregroundColor: { red: 1, green: 1, blue: 1 } },
@@ -223,7 +241,23 @@ export async function getOrCreateOfficialInscritosSheet(): Promise<{ id: string;
                       },
                     },
                     {
-                      userEnteredValue: { stringValue: "CIDADE" },
+                      userEnteredValue: { stringValue: "Telefone" },
+                      userEnteredFormat: {
+                        backgroundColor: { red: 0.0, green: 0.35, blue: 0.45 },
+                        textFormat: { bold: true, foregroundColor: { red: 1, green: 1, blue: 1 } },
+                        horizontalAlignment: "CENTER",
+                      },
+                    },
+                    {
+                      userEnteredValue: { stringValue: "Cidade" },
+                      userEnteredFormat: {
+                        backgroundColor: { red: 0.0, green: 0.35, blue: 0.45 },
+                        textFormat: { bold: true, foregroundColor: { red: 1, green: 1, blue: 1 } },
+                        horizontalAlignment: "CENTER",
+                      },
+                    },
+                    {
+                      userEnteredValue: { stringValue: "Estado" },
                       userEnteredFormat: {
                         backgroundColor: { red: 0.0, green: 0.35, blue: 0.45 },
                         textFormat: { bold: true, foregroundColor: { red: 1, green: 1, blue: 1 } },
@@ -233,7 +267,7 @@ export async function getOrCreateOfficialInscritosSheet(): Promise<{ id: string;
                     {
                       userEnteredValue: { stringValue: "Número da Sorte" },
                       userEnteredFormat: {
-                        backgroundColor: { red: 0.0, green: 0.35, blue: 0.45 }, // Azul petróleo do print
+                        backgroundColor: { red: 0.0, green: 0.35, blue: 0.45 },
                         textFormat: { bold: true, foregroundColor: { red: 1, green: 1, blue: 1 } },
                         horizontalAlignment: "CENTER",
                       },
@@ -271,7 +305,9 @@ export async function appendInscritoToOfficialSheet(data: {
   numeroDaSorte: string;
   nomeCompleto: string;
   email: string;
+  telefone: string;
   cidade: string;
+  estado: string;
 }): Promise<{ ok: boolean; numeroInscricao: number }> {
   const token = await getAccessToken();
   if (!token) {
@@ -303,7 +339,7 @@ export async function appendInscritoToOfficialSheet(data: {
 
   const appendUrl = `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(
     sheet.id
-  )}/values/Inscritos!A:E:append?valueInputOption=USER_ENTERED`;
+  )}/values/Inscritos!A:G:append?valueInputOption=USER_ENTERED`;
 
   const appendRes = await fetch(appendUrl, {
     method: "POST",
@@ -312,14 +348,16 @@ export async function appendInscritoToOfficialSheet(data: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      range: "Inscritos!A:E",
+      range: "Inscritos!A:G",
       majorDimension: "ROWS",
       values: [
         [
           nextNumber,
           data.nomeCompleto,
           data.email,
+          data.telefone,
           data.cidade,
+          data.estado,
           data.numeroDaSorte,
         ],
       ],
@@ -412,7 +450,9 @@ export async function syncKitSubmissionToActiveSheet(kit: {
   numeroDaSorte: string;
   nomeCompleto: string;
   email: string;
+  telefone: string;
   cidade: string;
+  estado: string;
 }): Promise<boolean> {
   try {
     const res = await appendInscritoToOfficialSheet(kit);
@@ -528,10 +568,12 @@ export function initSheetsUI(): void {
         exportBtn.setAttribute("disabled", "true");
 
         const res = await appendInscritoToOfficialSheet({
-          numeroDaSorte: `#CMP-${Math.floor(10000 + Math.random() * 90000)}`,
+          numeroDaSorte: `${Math.floor(10000 + Math.random() * 90000)}`,
           nomeCompleto: "Participante Demonstrativo",
           email: "atleta@exemplo.com.br",
+          telefone: "(31) 98765-4321",
           cidade: "Belo Horizonte",
+          estado: "MG",
         });
 
         if (res.ok) {

@@ -348,7 +348,9 @@ export function initKitForm(endpoint: string = KIT_FORM_ENDPOINT): void {
 
   const nomeInput = document.getElementById("kit-nome") as HTMLInputElement | null;
   const emailInput = document.getElementById("kit-email") as HTMLInputElement | null;
+  const telefoneInput = document.getElementById("kit-telefone") as HTMLInputElement | null;
   const cidadeInput = document.getElementById("kit-cidade") as HTMLInputElement | null;
+  const estadoInput = document.getElementById("kit-estado") as HTMLSelectElement | null;
   const feedbackEl = document.getElementById("kit-form-feedback");
   const submitBtn = document.getElementById("btn-kit-submit") as HTMLButtonElement | null;
 
@@ -397,9 +399,29 @@ export function initKitForm(endpoint: string = KIT_FORM_ENDPOINT): void {
     });
   }
 
-  // Validação em Tempo Real
+  // Validação em Tempo Real & Máscara de Telefone
   bindFieldValidation(nomeInput, "kit-nome-error", validateName, true);
   bindFieldValidation(cidadeInput, "kit-cidade-error", validateCity, true);
+
+  if (telefoneInput) {
+    telefoneInput.addEventListener("input", (e) => {
+      const target = e.target as HTMLInputElement;
+      target.value = formatBrazilianPhone(target.value);
+      clearInputError(telefoneInput, "kit-telefone-error", true);
+    });
+    telefoneInput.addEventListener("blur", () => {
+      const res = validatePhone(telefoneInput.value);
+      if (!res.isValid && telefoneInput.value.trim().length > 0) {
+        setInputError(telefoneInput, "kit-telefone-error", res.message, true);
+      }
+    });
+  }
+
+  if (estadoInput) {
+    estadoInput.addEventListener("change", () => {
+      clearInputError(estadoInput, "kit-estado-error", true);
+    });
+  }
 
   if (emailInput) {
     emailInput.addEventListener("input", () => {
@@ -429,11 +451,15 @@ export function initKitForm(endpoint: string = KIT_FORM_ENDPOINT): void {
 
     const nome = sanitizeInput(nomeInput?.value || "");
     const email = sanitizeInput(emailInput?.value || "");
+    const telefone = sanitizeInput(telefoneInput?.value || "");
     const cidade = sanitizeInput(cidadeInput?.value || "");
+    const estado = sanitizeInput(estadoInput?.value || "");
 
     const vNome = validateName(nome);
     const vEmail = validateEmail(email);
+    const vTelefone = validatePhone(telefone);
     const vCidade = validateCity(cidade);
+    const vEstado = { isValid: Boolean(estado && estado.length >= 2), message: "Estado obrigatório" };
 
     let hasErrors = false;
 
@@ -445,22 +471,32 @@ export function initKitForm(endpoint: string = KIT_FORM_ENDPOINT): void {
       setInputError(emailInput, "kit-email-error", vEmail.message, true);
       hasErrors = true;
     }
+    if (!vTelefone.isValid) {
+      setInputError(telefoneInput, "kit-telefone-error", vTelefone.message, true);
+      hasErrors = true;
+    }
     if (!vCidade.isValid) {
       setInputError(cidadeInput, "kit-cidade-error", vCidade.message, true);
+      hasErrors = true;
+    }
+    if (!vEstado.isValid) {
+      setInputError(estadoInput, "kit-estado-error", vEstado.message, true);
       hasErrors = true;
     }
 
     if (hasErrors) return;
 
     // Resgata ou aloca número da sorte estritamente numérico e nunca repetível
-    const luckyCode = await getOrAllocateUniqueLuckyNumber(nome, email, cidade);
+    const luckyCode = await getOrAllocateUniqueLuckyNumber(nome, email, cidade, telefone, estado);
     const nowStr = new Date().toLocaleString("pt-BR");
 
     activeTicketData = {
       code: luckyCode,
       name: nome,
       email,
+      phone: telefone,
       city: cidade,
+      state: estado,
       date: nowStr,
     };
 
@@ -468,7 +504,9 @@ export function initKitForm(endpoint: string = KIT_FORM_ENDPOINT): void {
       origem: "5a-corrida-mario-penna-kit-cuidar",
       nome,
       email,
+      telefone,
       cidade,
+      estado,
       numeroDaSorte: luckyCode,
       enviadoEm: new Date().toISOString(),
     };
@@ -482,8 +520,11 @@ export function initKitForm(endpoint: string = KIT_FORM_ENDPOINT): void {
     try {
       let sequentialInscricao: number | string | null = null;
 
-      // 1. Envio para Apps Script Web App (endpoint oficial configurado)
-      const appsScriptUrl = endpoint || localStorage.getItem("cmp_apps_script_url") || "";
+      // 1. Envio para Apps Script Web App (endpoint oficial configurado Versão 4)
+      const appsScriptUrl =
+        localStorage.getItem("cmp_kit_apps_script_url") ||
+        endpoint ||
+        KIT_FORM_ENDPOINT;
       if (appsScriptUrl) {
         try {
           const res = await fetch(appsScriptUrl, {
@@ -494,7 +535,9 @@ export function initKitForm(endpoint: string = KIT_FORM_ENDPOINT): void {
             body: JSON.stringify({
               nome,
               email,
+              telefone,
               cidade,
+              estado,
               numeroDaSorte: luckyCode,
               code: luckyCode,
             }),
@@ -521,7 +564,9 @@ export function initKitForm(endpoint: string = KIT_FORM_ENDPOINT): void {
               body: JSON.stringify({
                 nome,
                 email,
+                telefone,
                 cidade,
+                estado,
                 numeroDaSorte: luckyCode,
                 code: luckyCode,
               }),
@@ -539,7 +584,9 @@ export function initKitForm(endpoint: string = KIT_FORM_ENDPOINT): void {
         numeroDaSorte: luckyCode,
         nomeCompleto: nome,
         email,
+        telefone,
         cidade,
+        estado,
       }).catch((err) => {
         console.warn("Sincronização com Google Sheets pendente de conexão:", err);
       });
@@ -549,7 +596,9 @@ export function initKitForm(endpoint: string = KIT_FORM_ENDPOINT): void {
         code: luckyCode,
         name: nome,
         email,
+        phone: telefone,
         city: cidade,
+        state: estado,
         inscricao: sequentialInscricao || undefined,
         date: nowStr,
       };
@@ -567,7 +616,9 @@ export function initKitForm(endpoint: string = KIT_FORM_ENDPOINT): void {
       // 6. Limpa os campos após envio bem-sucedido
       if (nomeInput) nomeInput.value = "";
       if (emailInput) emailInput.value = "";
+      if (telefoneInput) telefoneInput.value = "";
       if (cidadeInput) cidadeInput.value = "";
+      if (estadoInput) estadoInput.value = "";
 
       if (feedbackEl) {
         feedbackEl.textContent = "";

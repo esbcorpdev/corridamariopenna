@@ -906,25 +906,94 @@
                 <span class="kit-field-error" id="kit-email-error" role="alert"></span>
               </div>
 
-              <!-- Campo 3: CIDADE -->
+              <!-- Campo 3: TELEFONE -->
               <div class="kit-input-card">
-                <label for="kit-cidade" class="kit-input-card__label">CIDADE *</label>
+                <label for="kit-telefone" class="kit-input-card__label">TELEFONE *</label>
                 <div class="kit-input-card__lines">
                   <input
-                    type="text"
-                    id="kit-cidade"
-                    name="cidade"
+                    type="tel"
+                    id="kit-telefone"
+                    name="telefone"
                     class="kit-input-card__field"
-                    placeholder="Ex.: Belo Horizonte - MG *"
-                    autocomplete="address-level2"
+                    placeholder="(00) 00000-0000 *"
+                    autocomplete="tel"
                     required
-                    minlength="2"
-                    aria-describedby="kit-cidade-error"
+                    aria-describedby="kit-telefone-error"
                   />
                   <span class="kit-ruled-line" aria-hidden="true"></span>
                   <span class="kit-ruled-line" aria-hidden="true"></span>
                 </div>
-                <span class="kit-field-error" id="kit-cidade-error" role="alert"></span>
+                <span class="kit-field-error" id="kit-telefone-error" role="alert"></span>
+              </div>
+
+              <!-- Campo 4: CIDADE (70%) e ESTADO (30%) NA MESMA LINHA -->
+              <div class="kit-input-row-split">
+                <!-- Cidade (70%) -->
+                <div class="kit-input-card kit-input-card--cidade">
+                  <label for="kit-cidade" class="kit-input-card__label">CIDADE *</label>
+                  <div class="kit-input-card__lines">
+                    <input
+                      type="text"
+                      id="kit-cidade"
+                      name="cidade"
+                      class="kit-input-card__field"
+                      placeholder="Ex.: Belo Horizonte *"
+                      autocomplete="address-level2"
+                      required
+                      minlength="2"
+                      aria-describedby="kit-cidade-error"
+                    />
+                    <span class="kit-ruled-line" aria-hidden="true"></span>
+                    <span class="kit-ruled-line" aria-hidden="true"></span>
+                  </div>
+                  <span class="kit-field-error" id="kit-cidade-error" role="alert"></span>
+                </div>
+
+                <!-- Estado (30%) -->
+                <div class="kit-input-card kit-input-card--estado">
+                  <label for="kit-estado" class="kit-input-card__label">ESTADO *</label>
+                  <div class="kit-input-card__lines">
+                    <select
+                      id="kit-estado"
+                      name="estado"
+                      class="kit-input-card__field kit-input-card__field--select"
+                      required
+                      aria-describedby="kit-estado-error"
+                    >
+                      <option value="" disabled selected hidden>UF *</option>
+                      <option value="MG">MG</option>
+                      <option value="SP">SP</option>
+                      <option value="RJ">RJ</option>
+                      <option value="ES">ES</option>
+                      <option value="PR">PR</option>
+                      <option value="SC">SC</option>
+                      <option value="RS">RS</option>
+                      <option value="BA">BA</option>
+                      <option value="GO">GO</option>
+                      <option value="DF">DF</option>
+                      <option value="MT">MT</option>
+                      <option value="MS">MS</option>
+                      <option value="PE">PE</option>
+                      <option value="CE">CE</option>
+                      <option value="PA">PA</option>
+                      <option value="AM">AM</option>
+                      <option value="MA">MA</option>
+                      <option value="PB">PB</option>
+                      <option value="RN">RN</option>
+                      <option value="AL">AL</option>
+                      <option value="PI">PI</option>
+                      <option value="SE">SE</option>
+                      <option value="RO">RO</option>
+                      <option value="TO">TO</option>
+                      <option value="AC">AC</option>
+                      <option value="AP">AP</option>
+                      <option value="RR">RR</option>
+                    </select>
+                    <span class="kit-ruled-line" aria-hidden="true"></span>
+                    <span class="kit-ruled-line" aria-hidden="true"></span>
+                  </div>
+                  <span class="kit-field-error" id="kit-estado-error" role="alert"></span>
+                </div>
               </div>
 
               <!-- Botão Enviar à Direita / Ações pós-envio -->

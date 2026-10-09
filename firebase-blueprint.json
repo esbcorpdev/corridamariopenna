@@ -36,9 +36,18 @@
           "format": "email",
           "description": "E-mail do participante"
         },
+        "phone": {
+          "type": "string",
+          "description": "Telefone de contato do participante"
+        },
         "city": {
           "type": "string",
-          "description": "Cidade e estado do participante"
+          "description": "Cidade do participante"
+        },
+        "state": {
+          "type": "string",
+          "maxLength": 2,
+          "description": "Sigla da Unidade Federativa (UF) do participante"
         },
         "createdAt": {
           "type": "string",
