@@ -136,7 +136,7 @@ export async function downloadLuckyNumberTicket(data: TicketData): Promise<void>
   ctx.fillText("SEU NÚMERO DA SORTE", 102, 292);
 
   // Valor Digital Exato (.kit-success-code-value: apenas números)
-  const formattedCode = data.code.replace(/\D/g, "");
+  const formattedCode = data.code.replace(/\D/g, "") || data.code;
   ctx.save();
   ctx.shadowColor = "rgba(255, 184, 0, 0.55)";
   ctx.shadowBlur = 18;
@@ -215,7 +215,7 @@ export async function downloadLuckyNumberTicket(data: TicketData): Promise<void>
   ctx.fillText("✓ AUTÊNTICO", 564, footerBoxY + 43);
 
   // 9. Download Automático do PNG do Card
-  const cleanCode = data.code.replace(/[^a-zA-Z0-9-]/g, "");
+  const cleanCode = data.code.replace(/[^a-zA-Z0-9-]/g, "") || "comprovante";
   const imageUri = canvas.toDataURL("image/png");
   const link = document.createElement("a");
   link.download = `Card-Numero-da-Sorte-${cleanCode}.png`;

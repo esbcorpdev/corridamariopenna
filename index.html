@@ -14,30 +14,48 @@
       gtag('config', 'G-8NYWDK35JN');
     </script>
 
-    <!-- SEO Principal -->
-    <title>Corrida Mário Penna Landing Page</title>
+    <!-- SEO Principal — Especialista em Otimização -->
+    <title>5ª Corrida Mário Penna • Saúde ao Seu Alcance & Onmed</title>
     <meta
       name="description"
-      content="High-performance, responsive landing page for the 5th Mário Penna Race, featuring sleek web design and interactive event forms."
+      content="Participe da 5ª Corrida Mário Penna em BH. Portal Saúde ao Seu Alcance, planos empresariais Onmed em Minas Gerais e sorteio exclusivo do Kit Cuidar de Você."
     />
+    <meta
+      name="keywords"
+      content="5ª Corrida Mário Penna, Corrida Mário Penna, Saúde ao Seu Alcance, Onmed, Onmed Minas Gerais, planos de saúde empresariais, Kit Cuidar de Você, corrida de rua BH, saúde preventiva, Belo Horizonte esporte"
+    />
+    <meta name="author" content="Onmed Saúde • ESB Corp • Saúde ao Seu Alcance" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://corridamariopenna.com.br/" />
 
-    <!-- Open Graph / Social Sharing -->
-    <meta property="og:title" content="Corrida Mário Penna Landing Page" />
+    <!-- Open Graph / Facebook & WhatsApp Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="5ª Corrida Mário Penna" />
+    <meta property="og:title" content="5ª Corrida Mário Penna • Saúde ao Seu Alcance & Onmed" />
     <meta
       property="og:description"
-      content="High-performance, responsive landing page for the 5th Mário Penna Race, featuring sleek web design and interactive event forms."
+      content="Esporte, prevenção e bem-estar em Belo Horizonte: conecte-se ao portal Saúde ao Seu Alcance, planos de saúde empresariais Onmed MG e concorra ao Kit Cuidar de Você."
     />
+    <meta property="og:url" content="https://corridamariopenna.com.br/" />
     <meta property="og:image" content="/assets/hero-cidade.png" />
-    <meta property="og:type" content="website" />
+    <meta property="og:image:alt" content="Cenário Ilustrado Oficial da 5ª Corrida Mário Penna em Belo Horizonte com corredores e vista da cidade" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter / X Cards -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Corrida Mário Penna Landing Page" />
+    <meta name="twitter:title" content="5ª Corrida Mário Penna • Saúde ao Seu Alcance & Onmed" />
     <meta
       name="twitter:description"
-      content="Esporte, movimento, saúde e cuidado na 5ª Corrida Mário Penna. Participe e concorra a um Kit Cuidar de Você exclusivo."
+      content="Esporte, prevenção e bem-estar em Belo Horizonte: portal Saúde ao Seu Alcance, planos empresariais Onmed MG e sorteio do Kit Cuidar de Você."
     />
+    <meta name="twitter:image" content="/assets/hero-cidade.png" />
+    <meta name="twitter:image:alt" content="5ª Corrida Mário Penna - Belo Horizonte" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/assets/logotipo-corrida.png" />
+    <link rel="apple-touch-icon" href="/assets/logotipo-corrida.png" />
 
     <!-- Tipografia Google Fonts: Chakra Petch (Countdown Digital), Montserrat & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -50,18 +68,95 @@
     <!-- Folha de Estilo Principal -->
     <link rel="stylesheet" href="/src/style.css" />
 
-    <!-- Dados Estruturados Schema.org (Evento Esportivo) -->
+    <!-- Dados Estruturados Schema.org (JSON-LD Completo & Otimizado) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "SportsEvent",
-        "name": "5ª Corrida Mário Penna",
-        "description": "Evento esportivo de corrida de rua promovendo saúde, movimento, prevenção e cuidado, com apoio de Saúde ao Seu Alcance e Onmed.",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mário Penna"
-        }
+        "@graph": [
+          {
+            "@type": "SportsEvent",
+            "@id": "https://corridamariopenna.com.br/#event",
+            "name": "5ª Corrida Mário Penna",
+            "description": "5ª edição da Corrida Mário Penna em Belo Horizonte, promovendo saúde, movimento, prevenção contra o câncer e bem-estar, com apoio do portal Saúde ao Seu Alcance e da operadora Onmed.",
+            "startDate": "2026-10-24T07:00:00-03:00",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "location": {
+              "@type": "Place",
+              "name": "Belo Horizonte",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Belo Horizonte",
+                "addressRegion": "MG",
+                "addressCountry": "BR"
+              }
+            },
+            "image": [
+              "/assets/hero-cidade.png",
+              "/assets/logotipo-corrida.png"
+            ],
+            "organizer": {
+              "@type": "Organization",
+              "name": "Instituto Mário Penna",
+              "url": "https://mariopenna.org.br"
+            },
+            "sponsor": [
+              {
+                "@type": "Organization",
+                "name": "Saúde ao Seu Alcance",
+                "url": "https://saudeaoseualcance.com"
+              },
+              {
+                "@type": "Organization",
+                "name": "Onmed Saúde",
+                "description": "Operadora de planos de saúde empresariais com tecnologia e cuidado humanizado."
+              }
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://corridamariopenna.com.br/#website",
+            "url": "https://corridamariopenna.com.br/",
+            "name": "5ª Corrida Mário Penna",
+            "description": "Landing page oficial da 5ª Corrida Mário Penna com contagem regressiva, portal Saúde ao Seu Alcance, planos Onmed para empresas e cadastro para o Kit Cuidar de Você.",
+            "inLanguage": "pt-BR",
+            "publisher": {
+              "@type": "Organization",
+              "name": "ESB Corp / Onmed Saúde",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "/assets/logotipo-corrida.png"
+              }
+            }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://corridamariopenna.com.br/#webpage",
+            "url": "https://corridamariopenna.com.br/",
+            "name": "5ª Corrida Mário Penna • Saúde ao Seu Alcance & Onmed",
+            "isPartOf": {
+              "@id": "https://corridamariopenna.com.br/#website"
+            },
+            "about": [
+              {
+                "@type": "Thing",
+                "name": "Corrida de Rua e Saúde Preventiva"
+              },
+              {
+                "@type": "Thing",
+                "name": "Planos de Saúde Empresariais Onmed MG"
+              },
+              {
+                "@type": "Thing",
+                "name": "Portal Saúde ao Seu Alcance"
+              },
+              {
+                "@type": "Thing",
+                "name": "Sorteio do Kit Cuidar de Você"
+              }
+            ]
+          }
+        ]
       }
     </script>
   </head>

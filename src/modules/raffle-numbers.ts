@@ -121,26 +121,18 @@ export async function getOrAllocateUniqueLuckyNumber(
     const emailDocRef = doc(db, "raffle_entries", normEmail);
     const counterDocRef = doc(db, "counters", "raffle_counter");
 
-    // Verifica se já existe registro na nuvem para este e-mail
-    const existingEmailSnap = await getDoc(emailDocRef);
-    if (existingEmailSnap.exists()) {
-      const data = existingEmailSnap.data();
-      if (data?.code) {
-        const cloudCode = String(data.code).replace(/\D/g, "");
-        saveLocalEntry({
-          code: cloudCode,
-          name,
-          email: normEmail,
-          city,
-          date: data.createdAt || new Date().toISOString(),
-        });
-        return cloudCode;
-      }
-    }
-
     // Executa transação atômica que garante incremento sequencial único sem concorrência
     const allocatedCode = await runTransaction(db, async (transaction) => {
-      // Lê o contador global
+      // 1. Verifica atomicamente se já existe registro na nuvem para este e-mail
+      const existingEmailSnap = await transaction.get(emailDocRef);
+      if (existingEmailSnap.exists()) {
+        const data = existingEmailSnap.data();
+        if (data?.code) {
+          return String(data.code).replace(/\D/g, "");
+        }
+      }
+
+      // 2. Lê o contador global
       const counterSnap = await transaction.get(counterDocRef);
       let currentNumber = BASE_START_NUMBER;
 

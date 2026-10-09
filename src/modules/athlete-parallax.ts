@@ -80,10 +80,62 @@ export function initAthleteParallaxAndRun(): void {
     setPose(next);
   }
 
-  /**
-   * Inicia o timer de transição contínua enquanto a div está visível
-   */
+  let rafId: number | null = null;
+
+  // Loop de renderização (60fps) com interpolação suave
+  function render(timestamp: number): void {
+    if (prefersReducedMotion) {
+      actor!.style.transform = "none";
+      rafId = null;
+      return;
+    }
+
+    if (!isDivVisible || document.hidden) {
+      rafId = null;
+      return;
+    }
+
+    const isMobile = window.innerWidth <= 820;
+    const waypoints = isMobile ? WAYPOINTS_MOBILE : WAYPOINTS_DESKTOP;
+    const targetWp = waypoints[currentPose - 1] || waypoints[0];
+
+    // Lerp suave em direção ao waypoint da pose ativa
+    currentX += (targetWp.x - currentX) * 0.08;
+    currentY += (targetWp.y - currentY) * 0.08;
+    currentScale += (targetWp.scale - currentScale) * 0.08;
+    currentRotate += (targetWp.rotate - currentRotate) * 0.08;
+
+    // Oscilação natural de passada (sutil: 3.5px vertical e 0.25° rotação)
+    const cadenceFreq = timestamp * 0.0028 + strideAccumulator;
+    const cadenceY = Math.sin(cadenceFreq) * 3.5;
+    const cadenceRotate = Math.sin(cadenceFreq) * 0.25;
+
+    const finalX = currentX;
+    const finalY = currentY + cadenceY;
+    const finalScale = currentScale;
+    const finalRotate = currentRotate + cadenceRotate;
+
+    actor!.style.transform = `translate3d(${finalX.toFixed(1)}px, ${finalY.toFixed(1)}px, 0) scale(${finalScale.toFixed(3)}) rotate(${finalRotate.toFixed(2)}deg)`;
+
+    rafId = requestAnimationFrame(render);
+  }
+
+  function startRenderLoop(): void {
+    if (!rafId && !prefersReducedMotion && isDivVisible && !document.hidden) {
+      rafId = requestAnimationFrame(render);
+    }
+  }
+
+  function stopRenderLoop(): void {
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+  }
+
+  // Inicia o timer de transição contínua enquanto a div está visível
   function startAutoTransition(): void {
+    startRenderLoop();
     if (autoTimer) return;
     autoTimer = setInterval(() => {
       if (isDivVisible && !document.hidden) {
@@ -92,10 +144,9 @@ export function initAthleteParallaxAndRun(): void {
     }, 2800);
   }
 
-  /**
-   * Pausa o timer quando a div sai do campo visual
-   */
+  // Pausa o timer quando a div sai do campo visual
   function stopAutoTransition(): void {
+    stopRenderLoop();
     if (autoTimer) {
       clearInterval(autoTimer);
       autoTimer = null;
@@ -135,6 +186,7 @@ export function initAthleteParallaxAndRun(): void {
 
   // Reação sutil ao scroll
   function onScroll(): void {
+    if (!isDivVisible) return;
     const scrollY = window.scrollY;
     const delta = Math.abs(scrollY - lastScrollY);
     lastScrollY = scrollY;
@@ -143,39 +195,6 @@ export function initAthleteParallaxAndRun(): void {
 
   window.addEventListener("scroll", onScroll, { passive: true });
 
-  // Loop de renderização (60fps) com interpolação suave
-  function render(timestamp: number): void {
-    if (prefersReducedMotion) {
-      actor!.style.transform = "none";
-      return;
-    }
-
-    const isMobile = window.innerWidth <= 820;
-    const waypoints = isMobile ? WAYPOINTS_MOBILE : WAYPOINTS_DESKTOP;
-    const targetWp = waypoints[currentPose - 1] || waypoints[0];
-
-    // Lerp suave em direção ao waypoint da pose ativa
-    currentX += (targetWp.x - currentX) * 0.08;
-    currentY += (targetWp.y - currentY) * 0.08;
-    currentScale += (targetWp.scale - currentScale) * 0.08;
-    currentRotate += (targetWp.rotate - currentRotate) * 0.08;
-
-    // Oscilação natural de passada (sutil: 3.5px vertical e 0.25° rotação)
-    const cadenceFreq = timestamp * 0.0028 + strideAccumulator;
-    const cadenceY = Math.sin(cadenceFreq) * 3.5;
-    const cadenceRotate = Math.sin(cadenceFreq) * 0.25;
-
-    const finalX = currentX;
-    const finalY = currentY + cadenceY;
-    const finalScale = currentScale;
-    const finalRotate = currentRotate + cadenceRotate;
-
-    actor!.style.transform = `translate3d(${finalX.toFixed(1)}px, ${finalY.toFixed(1)}px, 0) scale(${finalScale.toFixed(3)}) rotate(${finalRotate.toFixed(2)}deg)`;
-
-    requestAnimationFrame(render);
-  }
-
   // Inicializa a primeira pose
   setPose(1);
-  requestAnimationFrame(render);
 }

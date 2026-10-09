@@ -509,8 +509,26 @@ export function initKitForm(endpoint: string = KIT_FORM_ENDPOINT): void {
               // Resposta opaca ou redirecionamento padrão do Google Apps Script
             }
           }
-        } catch (err) {
-          console.warn("Disparo para Google Apps Script:", err);
+        } catch {
+          // Em caso de restrição de CORS redirect pelo navegador, dispara com mode: 'no-cors' para garantir entrega ao Apps Script
+          try {
+            await fetch(appsScriptUrl, {
+              method: "POST",
+              mode: "no-cors",
+              headers: {
+                "Content-Type": "text/plain;charset=utf-8",
+              },
+              body: JSON.stringify({
+                nome,
+                email,
+                cidade,
+                numeroDaSorte: luckyCode,
+                code: luckyCode,
+              }),
+            });
+          } catch (noCorsErr) {
+            console.warn("Disparo secundário no-cors:", noCorsErr);
+          }
         }
       } else {
         await sendFormData(endpoint, payload);
